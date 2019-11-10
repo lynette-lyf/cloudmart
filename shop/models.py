@@ -10,3 +10,7 @@ class Product(models.Model):
     cost = models.IntegerField(blank=False)
     quantity = models.IntegerField(blank=False, default=0)
     image = models.ImageField(blank=True, null=True)
+    
+    # Display <Product Name>:<Product ID>
+    def __str__(self):
+        return self.name + " : " + self.sku
