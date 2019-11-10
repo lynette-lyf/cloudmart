@@ -9,3 +9,4 @@ class Product(models.Model):
     description = models.TextField(blank=False)
     cost = models.IntegerField(blank=False)
     quantity = models.IntegerField(blank=False, default=0)
+    image = models.ImageField(blank=True, null=True)
