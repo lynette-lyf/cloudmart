@@ -28,5 +28,6 @@ urlpatterns = [
     # Integrate app's url.py files into Project > path('appname/', include('appname.urls'))
     path('accounts/', include('accounts.urls')),
     path('shop/', include('shop.urls')),
-    path('cart/', include('cart.urls'))
+    path('cart/', include('cart.urls')),
+    path('checkout/', include('checkout.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

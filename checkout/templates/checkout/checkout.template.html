@@ -1,0 +1,9 @@
+{% extends 'base.template.html' %}
+
+{%block page_heading %} Make payment {%endblock%}
+
+{%block content %}
+<p>Your total is ${{total_cost}}0</p>
+<a href="{%url 'charge' %}">Pay</a>
+
+{%endblock%}

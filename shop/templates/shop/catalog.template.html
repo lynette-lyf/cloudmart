@@ -14,6 +14,7 @@
         <div class="card-body">
             <h5 class="card-title">{{product.name}}</h5>
             <p class="card-text">{{product.description}}</p>
+            <p class="card-text">${{product.cost.getCostInDollars}}</p>
             <a href="{% url 'add_to_cart' product_id=product.id %}" class="btn btn-primary">Add to Cart</a>
         </div>
     </div>
