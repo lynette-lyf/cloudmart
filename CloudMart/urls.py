@@ -19,9 +19,14 @@ from accounts.views import index, logout, login, profile, register
 from django.conf.urls.static import static
 from django.conf import settings
 
+
 urlpatterns = [
+    # URL for admin server
     path('admin/', admin.site.urls),
+    # Landing page
     path('', index, name='index'),
+    # Integrate app's url.py files into Project > path('appname/', include('appname.urls'))
     path('accounts/', include('accounts.urls')),
-    path('shop/', include('shop.urls'))
+    path('shop/', include('shop.urls')),
+    path('cart/', include('cart.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
