@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+    'storages',
     'accounts',
     'shop',
     'cart',
@@ -146,3 +147,24 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STRIPE_PUBLISHABLE_KEY=os.environ["STRIPE_PUBLISHABLE_KEY"]
 STRIPE_SECRET_KEY=os.environ["STRIPE_SECRET_KEY"]
+
+# FOR AWS
+
+# Disable the cache
+AWS_S3_OBJECT_PARAMETERS={
+    'Expires':'Thu, 31 Dec 2099 20:00:00 GMT',
+    'CacheControl':'max-age=946800'
+}
+
+AWS_STORAGE_BUCKET_NAME="lyf-cloudmart"
+AWS_S3_REGION_NAME="ap-southeast-1"
+AWS_ACCESS_KEY_ID=os.environ["AWS_ACCESS_KEY_ID"]
+AWS_SECRET_ACCESS_KEY=os.environ["AWS_SECRET_ACCESS_KEY"]
+AWS_S3_CUSTOM_DOMAIN="{}.s3.amazonaws.com".format(AWS_STORAGE_BUCKET_NAME)
+
+STATICFILES_LOCATION="static"
+STATICFILES_STORAGE = "custom_storages.StaticStorage"
+
+MEDIAFILES_LOCATION="media"
+DEFAULT_FILE_STORAGE='custom_storages.MediaStorage'
+
