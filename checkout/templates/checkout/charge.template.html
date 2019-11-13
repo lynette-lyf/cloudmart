@@ -34,8 +34,9 @@
 
     {% csrf_token %}
     
+    <!--To pass total amount and transaction ID back into the Transaction form -->
     <input type='hidden' value='{{amount}}' name='amount'/>
-    
+    <input type='hidden' value='{{transaction.id}}' name='transaction_id'/>
     <div class="form-group col-md-12">
         <input class=" btn btn-primary" id="submit_payment_btn" name="commit" type="submit" value="Pay">
     </div>
