@@ -16,8 +16,6 @@ def logout(request):
     return redirect(reverse('index'))
 
 # Login function
-
-
 def login(request):
     """Returns the login page"""
     if request.method == 'POST':

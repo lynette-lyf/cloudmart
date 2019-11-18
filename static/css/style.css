@@ -1,3 +1,440 @@
-body {
-    background-color:pink;
+/* Body Properties */
+body, html {
+  overflow-x:hidden;
+  height: 100%;
+  font-family: 'Lato', sans-serif;
+}
+
+/* Scrollbar Properties */
+::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+  border-left: 0;
+  background: #1e1753;
+}
+
+::-webkit-scrollbar-track {
+  background: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D20055;
+  border-radius: 0;
+}
+
+/* For all pages except Index.html */
+header {
+  min-height: 12vh;
+  background-color:#1e1753;
+}
+
+.logo {
+  position: absolute;
+  letter-spacing: -3px;
+  font-family: Open Sans;
+  text-align: center;
+  font-weight: 800;
+}
+
+.logo a {
+  text-decoration: none;
+  color: white;
+}
+
+.logo a:hover, logo a:focus {
+  color: #ea3a7e;
+}
+
+/* Navbar */
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  left: 10vw;
+}
+
+/* Navbar Links */
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+  width: 30%;
+}
+
+.nav-links li {
+  list-style: none;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 10px;
+  margin: 15px;
+}
+
+
+/* Cart */
+.cart {
+  color: white;
+  text-decoration: none;
+  list-style: none;
+  min-height: 8vh;
+  padding: 10px;
+}
+
+.cart:hover, .cart:focus {
+  color: #ea3a7e;
+}
+
+/* Cart Dropdown Container */
+.dropdown-nav {
+  position: absolute;
+  display: inline-block;
+}
+
+/* Cart Dropdown Content (Hidden by Default) */
+.cart-items {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 30vw;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  list-style: none;
+  top: 5vh;
+  right:-1vw;
+}
+
+/* Cart Links inside the dropdown */
+.cart-items a {
+  color: white;
+  background-color:#2f1793;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  transition: 0.3s;
+}
+
+.dropdown-nav:hover .cart-items {
+  display: block;
+  color: white;
+}
+
+.cart-items a:hover {
+  background-color: #4829e7;
+}
+
+
+/* BURGER */
+.burger {
+  display: none;
+}
+
+.burger div {
+  width: 25px;
+  height: 3.5px;
+  background-color: white;
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+/* DESKTOP VIEW */
+@media screen and (min-width: 1025px) {
+  .logo {
+    top: 2vh;
+    left: 47vw;
+    font-size: 5vh;
+  }
+
+  nav {
+    padding-top: 5vh;
+  }
+
+  .nav-links a:hover {
+    border-radius:30px;
+    background-color: #ea3a7e;
+    color: white;
+    transition: 0.1s;
+  }
+
+  .badge {
+    position: absolute;
+    left: 40px;
+    bottom: 20px;
+  }
+
+  .dropdown-nav {
+    left: 75vw;
+  }
+}
+
+/* MOBILE VIEW (IPAD PRO AND SMALLER DEVICES) */
+@media screen and (max-width: 1024px) {
+
+  .logo {
+    top: 0.5vh;
+    left: 22vw;
+    font-size: 7vh;
+  }
+
+  .nav-links, .nav-links a, .nav-links li, .dropdown, .cart-items {
+    z-index:1000;
+  }
+
+  .nav-links {
+    position: absolute;
+    left: 5vw;
+    height: 95vh;
+    top: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    transform: translateX(-100%);
+    transition: transform 0.5s ease-in;
+
+  }
+
+  .nav-links a {
+    color:white;
+    background-color: #ea3a7e;
+    border-radius:30px;
+  }
+
+  .nav-links li {
+    opacity: 0;
+  }
+
+  .burger {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    left: -5vw;
+    top: 4vh;
+    transform: scale(2);
+  }
+
+  .dropdown-nav {
+    display: flex;
+    justify-content: end;
+    position: absolute;
+  }
+
+  .dropdown-nav {
+    position: absolute;
+    left: 75vw;
+    top: 4vh;
+    transform: scale(2);
+  }
+
+  .badge {
+    position: absolute;
+    left: 5vw;
+    top: 3.5vh;
+  }
+
+  .cart-items {
+  top: 8.5vh;
+  }
+}
+
+/* MOBILE VIEW > NAVBAR ANIMATION */
+.nav-active {
+  transform: translateX(0);
+}
+
+@keyframes navLinkFade {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+/* MOBILE VIEW > BURGER ANIMATION */
+
+.toggle .line1 {
+  transform: rotate(-45deg) translate(-6px, 6px);
+}
+
+.toggle .line2 {
+  opacity: 0;
+}
+
+.toggle .line3 {
+  transform: rotate(45deg) translate(-6px, -6px);
+}
+
+
+
+/* Parallax Hero */
+.parallax-title {
+  letter-spacing: -15px;
+  font-family: Open Sans;
+  color: white;
+  text-align: center;
+  font-size: 180px;
+  font-weight: 800;
+  line-height: 200px;
+}
+
+.parallax-slogan {
+  color: white;
+  width: 700px;
+  text-align: center;
+  font-style: italic;
+  font-weight: 0;
+}
+
+
+.MainContainer {
+  perspective: 1px;
+  transform-style: preserve-3d;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.ContentContainer {
+  position: relative;
+  display: block;
+  background-color: white;
+  z-index: 1;
+}
+
+.Content {
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.ParallaxContainer {
+  display: flex;
+  flex: 1 0 auto;
+  position: relative;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  transform: translateZ(-1px) scale(2);
+  /*background: url(media/sky.png);*/
+  background-repeat: no-repeat;
+}
+
+/* Parallax Cursor */
+
+/* Container for parallax cursor effect */
+#ParallaxCursor{
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index:1000;
+}
+
+/* Underlay for objects to move about */
+#underlay {
+  background-color:transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index:1000;
+}
+
+/* Properties for each moving object */
+.slide {
+  display: block;
+  position: relative;
+  height: 200px;
+  width: 200px;
+  background-color: transparent;
+  z-index:1000;
+}
+
+/* Position for each moving object in Desktop */
+@media screen and (min-width: 1025px) {
+
+  /* Logo and slogan */
+  .one {
+    left: -12%;
+    top: -2%;
+  }
+
+  /* Airplane GIF */
+  .two {
+    transform: scale(0.5) rotate(-15deg);
+    left: -150%;
+    top: -200%;
+  }
+
+  /* Basket IMG */
+  .three {
+    left: 100%;
+    top: -70%;
+  }
+
+}
+
+
+/* Position for each moving object in iPad */
+@media screen and (max-width: 1024px) {
+
+  /* Logo and slogan */
+  .one {
+    transform: scale(0.7);
+    left: -25%;
+    top: -2%;
+  }
+
+  /* Airplane GIF */
+  .two {
+    transform: scale(0.5) rotate(-15deg);
+    left: -100%;
+    top: -250%;
+  }
+
+  /* Basket IMG */
+  .three {
+    left: 100%;
+    top: -70%;
+  }
+
+}
+
+/* Position for each moving object in iPhone, etc */
+@media screen and (max-width: 414px) {
+  /* Logo and slogan */
+  .one {
+    transform: scale(0.45);
+    left: -32%;
+    top: -2%;
+  }
+
+  /* Airplane GIF */
+  .two {
+    transform: scale(0.5) rotate(-15deg);
+    left: -40%;
+    top: -250%;
+  }
+
+  /* Basket IMG */
+  .three {
+    left: 107%;
+    top: -70%;
+  }
 }

@@ -27,13 +27,12 @@
 </head>
 
 <body>
-      <header>
+	<div class="MainContainer">
+		<div class="ContentContainer">
 
 			<nav>
 
-        <div class="logo">
-          <a href="/">cloudmart</a>
-        </div>
+
 				<!-- Burger to toggle navbar in mobile view -->
 				<div class="burger">
 					<div class="line1"></div>
@@ -66,7 +65,7 @@
 
 				<!-- Cart -->
 				<div class="dropdown-nav">
-					<a href="{% url "view_cart" %}" class="cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i><span class="badge badge-light">4</span></a>
+					<a href="#" class="cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i><span class="badge badge-light">4</span></a>
       <!-- Cart dropdown -->
       <div class="cart-items">
             <li><a href="#">Item1</a></li>
@@ -78,17 +77,50 @@
 
   </nav>
 
-  </header>
+  </div>
+
+   <!-- Parallax Hero -->
+  <div class="ParallaxContainer" style="background: url(media/sky.png);">
+  <div id="ParallaxCursor">
+  <div id="underlay"></div>
+  <div class="slide one">
+
+        <h1 class="parallax-title">
+      cloudmart
+    </h1>
+            <h4 class="parallax-slogan">
+      through the clouds, to your doorstep
+    </h3>
+
+     <div class="slide two">
+      <img src="https://media.giphy.com/media/dvmfpfAQcU5AdZoBzk/source.gif"/>
+    </div>
+  <div class="slide three">
+     <img src="media/basket.png"/>
+  </div>
+  
+    
+</div>  
+
+</div>
+
+
+
+</div>
+
+
+  <div class="ContentContainer">
+    <div class="Content">
+    {% block content %}{% endblock %}
+     </div>
+  </div>
+
+</div>
 
 
 
 
-{% block content %}{% endblock %}
-
-
-
-
-    <!-- Optional JavaScript -->
+  <!-- Optional JavaScript -->
    <script src="{% static 'js/script.js' %}"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
