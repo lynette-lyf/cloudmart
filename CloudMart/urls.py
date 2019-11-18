@@ -27,6 +27,7 @@ urlpatterns = [
     path('', index, name='index'),
     # Integrate app's url.py files into Project > path('appname/', include('appname.urls'))
     path('accounts/', include('accounts.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('shop/', include('shop.urls')),
     path('cart/', include('cart.urls')),
     path('checkout/', include('checkout.urls'))
