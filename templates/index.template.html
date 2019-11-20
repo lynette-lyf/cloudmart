@@ -60,12 +60,12 @@
 					<li>
 						<a href="{% url "logout" %}">Logout</a>
 					</li>
-					{%endif%}
+					
 				</ul>
 
 				<!-- Cart -->
 				<div class="dropdown-nav">
-					<a href="#" class="cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i><span class="badge badge-light">4</span></a>
+					<a href="{% url "view_cart" %}" class="cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i><span class="badge badge-light">4</span></a>
       <!-- Cart dropdown -->
       <div class="cart-items">
             <li><a href="#">Item1</a></li>
@@ -74,10 +74,13 @@
             <li><a href="#">Checkout</a></li>
       </div>
 </div>
+{%endif%}
 
   </nav>
 
   </div>
+  
+  
 
    <!-- Parallax Hero -->
   <div class="ParallaxContainer" style="background: url(media/sky.png);">
