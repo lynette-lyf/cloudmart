@@ -28,6 +28,7 @@ header {
   background-color:#1e1753;
 }
 
+
 .logo {
   position: absolute;
   letter-spacing: -3px;
@@ -57,6 +58,10 @@ nav {
   justify-content: space-around;
   position: absolute;
   left: 10vw;
+}
+
+.navbar {
+  z-index: 1000;
 }
 
 /* Navbar Links */

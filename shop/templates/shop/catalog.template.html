@@ -4,17 +4,18 @@
     <a class='btn btn-primary' href="{% url 'view_cart' %}">View Cart</a>
 </div>
 
-<div style='display:flex;justify-content:space-between;'>
-    
-    
+
+<div id="product-container" class="container-fluid col-lg-8 col-md-8 col-sm-10" style="display: flex; flex-wrap: wrap;">   
     
     {%for product in all_products %}
-    <div class="card" style="width: 18rem;">
+    
+    <div class="card" style="padding: 2%; flex-grow: 1; flex-basis: 33%; display: flex;">
         <img style="max-width:200px; max-height:200px;" src="{{product.image.url}}" class="card-img-top">
         <div class="card-body">
-            <h5 class="card-title">{{product.name}}</h5>
-            <p class="card-text">{{product.description}}</p>
-            <p class="card-text">${{product.cost.getCostInDollars}}</p>
+            <a href="{% url 'productview' product_id=product.id %}"><h5 class="card-title">{{product.name}}</h5></a>
+            <p class="card-text">${{product.getCostInDollars}}0</p>
+            
+            
             <a href="{% url 'add_to_cart' product_id=product.id %}" class="btn btn-primary">Add to Cart</a>
         </div>
     </div>

@@ -1,0 +1,22 @@
+{% extends 'base.template.html' %}
+
+{%block content %}
+
+   <img src="{{selected_product.image.url}}"/> 
+ <h4>{{selected_product.name}}</h4>
+  <h4>{{selected_product.sku}}</h4>
+  <h4>{{selected_product.origin}}</h4>
+  <h4>{{selected_product.description}}</h4>
+   <h4>{{selected_product.ingredients}}</h4>
+   <h4>${{selected_product.getCostInDollars}}0</h4>
+
+
+            <!--Insert form to GET item quantity-->
+            <!--<form class='form' method="POST">-->
+            <!--<label>Quantity</label>-->
+            <!--        <input type='number' class='form-control' min='1' max='{{product.quantity}}' name='product_quantity' required/>-->
+            <!--    </form>-->
+                
+ <a href="{% url 'add_to_cart' product_id=selected_product.id %}" class="btn btn-primary">Add to Cart</a>
+ 
+{%endblock%}

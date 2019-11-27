@@ -2,6 +2,10 @@ from django.shortcuts import render, redirect, reverse, HttpResponse
 from django.contrib import auth, messages
 from .forms import UserLoginForm, UserRegistrationForm, get_user_model
 
+from django.contrib.auth import logout
+from django.conf import settings
+from django.shortcuts import redirect
+
 # import in the login_required annotation
 from django.contrib.auth.decorators import login_required
 
@@ -13,7 +17,8 @@ def index(request):
 def logout(request):
     auth.logout(request)
     messages.success(request, "You have successfully been logged out")
-    return redirect(reverse('index'))
+    # return redirect(reverse('index'))
+    return redirect('%s?userAction=%s' % (settings.LOGOUT_URL, request.path))
 
 # Login function
 def login(request):
@@ -28,7 +33,7 @@ def login(request):
             if user:
                 # log in the user
                 auth.login(user=user, request=request)
-                return redirect(reverse('index'))
+                return redirect('%s?userAction=%s' % (settings.LOGIN_URL, request.path))
             else:
                 login_form.add_error('None', "Invalid username or password")
     else:
