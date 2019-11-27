@@ -137,6 +137,7 @@ AUTHENTICATION_BACKENDS = (
 
 )
 
+# To redirect user to index
 LOGIN_URL = '/'
 LOGOUT_URL = '/'
 

@@ -17,7 +17,7 @@ def index(request):
 def logout(request):
     auth.logout(request)
     messages.success(request, "You have successfully been logged out")
-    # return redirect(reverse('index'))
+    # creating a custom logout view that calls the LOGOUT_URL function and defines a redirect page
     return redirect('%s?userAction=%s' % (settings.LOGOUT_URL, request.path))
 
 # Login function
@@ -33,6 +33,7 @@ def login(request):
             if user:
                 # log in the user
                 auth.login(user=user, request=request)
+                # creating a custom login view that calls the LOGIN_URL function and defines a redirect page
                 return redirect('%s?userAction=%s' % (settings.LOGIN_URL, request.path))
             else:
                 login_form.add_error('None', "Invalid username or password")
