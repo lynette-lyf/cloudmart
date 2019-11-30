@@ -11,6 +11,7 @@
     <p>Cost: ${{cart_item.product.getCostInDollars}}0
     <br>
     Quantity: {{ cart_item.quantity }}
+    Total product cost: ${{product_cost}}0
     <a href="{% url 'remove_from_cart' cart_item_id=cart_item.id%}">Remove</a>
     </p>
 </div>
@@ -19,7 +20,7 @@
 <div class="total-cost">
 
 <p>Your total is ${{total_cost}}0</p>
-<a href="{%url 'checkout' %}">Pay</a>
+<a href="{%url 'charge' %}">Pay</a>
 </div>
 
 {%endblock%}
