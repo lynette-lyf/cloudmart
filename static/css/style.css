@@ -28,6 +28,11 @@ header {
   background-color:#1e1753;
 }
 
+/*For profile.html*/
+#profile-header {
+  height: 40vh;
+  background-color:#1e1753;
+}
 
 .logo {
   position: absolute;
