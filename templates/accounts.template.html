@@ -1,0 +1,113 @@
+{% load static %}
+<html>
+
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+  <!--Materialize CSS-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+  
+  
+<title>Cloudmart</title>
+	
+     <style>
+        body {
+          display: flex;
+          flex-direction: column;
+          font-family: 'Lato', sans-serif;
+        }
+        
+    
+        main {
+          flex: 1 0 auto;
+          background-size: 200% 100% !important;
+          animation: move 10s ease infinite;
+          transform: translate3d(0, 0, 0);
+          background: linear-gradient(45deg, #c33764 10%, #1d2671 90%);
+          height: 100vh;
+        }
+        
+        
+        
+        .logo {
+          color: white;
+          font-family: Times New Roman;
+          font-weight: 800;
+          letter-spacing: -2px;
+          white-space: nowrap;
+          overflow: hidden;
+          width: 30em;
+          animation: linearwipe 8s steps(100, end); 
+        }
+        
+        @keyframes linearwipe{ 
+          from { width: 0; } 
+        }  
+        @keyframes move {
+            0% {
+                background-position: 0 0
+            }
+        
+            50% {
+                background-position: 100% 0
+            }
+        
+            100% {
+                background-position: 0 0
+            }
+        }
+    
+    
+    
+    
+        .input-field input[type=date]:focus + label,
+        .input-field input[type=text]:focus + label,
+        .input-field input[type=email]:focus + label,
+        .input-field input[type=password]:focus + label {
+          color: #e91e63;
+        }
+    
+        .input-field input[type=date]:focus,
+        .input-field input[type=text]:focus,
+        .input-field input[type=email]:focus,
+        .input-field input[type=password]:focus {
+          border-bottom: 2px solid #e91e63;
+          box-shadow: none;
+        }
+        
+        .waves-effect input[type="button"], .waves-effect input[type="reset"], .waves-effect input[type="submit"] {
+          padding-top: 2vh;
+        }
+        
+        .z-depth-5.white.lighten-4.row {
+          display: inline-block;
+          padding: 32px 48px 0px 48px;
+          border: 1px solid #EEE;
+          width: 500px;
+        }
+        
+        @media screen and (max-width: 414px) {
+            .z-depth-5.white.lighten-4.row {
+            width: 340px;
+          }
+        
+        }
+        
+
+      
+   
+  </style>
+</head>
+
+<body>
+    
+    {% block content %}{% endblock %}
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+</body>
+
+</html>

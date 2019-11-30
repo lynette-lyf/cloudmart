@@ -1,12 +1,63 @@
-{% extends 'base.template.html' %}
-
+{% extends 'accounts.template.html' %}
 {% block content %}
+  <main>
+    <center>
+      <div class="section"></div>
+      <h1 class='logo'>cloudmart</h1>
+      <div class="section"></div>
 
-  <form method='POST'>
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Log In">
-    <!--<a href="{% url "password_reset" %}" value="Forgot your password?"></a>-->
-  </form>
-      
+      <div class="container">
+        <div class="z-depth-5 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+
+          <form class="col s12" method='POST'>
+              {% csrf_token %}
+            
+              
+            <ul class='red-text' style='font-size: 1.4vh;'>{{form.errors}}</ul>
+            
+              
+            <div class='row'>
+              <div class='col s12'>
+              </div>
+            </div>
+
+            <div class='row'>
+              <div class='input-field col s12'>
+                
+                <p>
+                  <input class='validate' type='text' name='username' id='id_username' required/>
+                  <label for='username'>Enter your username</label>
+                </p>
+              </div>
+            </div>
+
+            <div class='row'>
+              <div class='input-field col s12'>
+                <p>
+                  <input class='validate' type='password' name='password' id='id_password' required/>
+                  <label for='id_password'>Enter your password</label>
+                </p>
+              </div>
+              <label style='float: right;'>
+								<a class='pink-text' href={% url "password_reset" %}><b>Forgot Password?</b></a>
+							</label>
+            </div>
+
+            <br />
+            <center>
+              <div class='row'>
+                <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect waves-light deep-purple darken-4' >Login</button>
+              </div>
+            </center>
+          </form>
+        </div>
+      </div>
+      <span class='white-text'>Don't have an account? <a class='pink-text' href={% url "user_register" %}>Sign up here</a></span>
+    </center>
+
+    <div class="section"></div>
+    <div class="section"></div>
+  </main>
 {% endblock %}
+
+

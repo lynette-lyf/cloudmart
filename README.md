@@ -13,3 +13,8 @@ or visit https://docs.aws.amazon.com/console/cloud9/ for our documentation.
 
 Happy coding!
 # cloudmart
+
+credits for login form layout: https://codepen.io/T-P/pen/bpWqrr
+
+errors: 
+1. static media wont show up after user register
