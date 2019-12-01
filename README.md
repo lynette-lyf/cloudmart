@@ -16,6 +16,7 @@ Happy coding!
 
 credits for login form layout: https://codepen.io/T-P/pen/bpWqrr
 cart inspired by: https://dribbble.com/shots/5039057-Shopping-cart-V2
+image hover effects: https://codepen.io/nxworld/pen/ZYNOBZ
 
 errors: 
 1. static media wont show up after user register > redirected to <url>/accounts/
@@ -24,6 +25,9 @@ errors:
 
 2. non-user able to view individual product page but registered user cant
     a) error with {%user auth%} part
+
+3. dont know how to filter by origin in shop:
+ ERROR MESSAGE - invalid literal for int() with base 10: 'Japan'
 
 to do:
 create status bar for 1.checkout 2.payment 3.order summary

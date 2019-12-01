@@ -1,34 +1,192 @@
-{% extends 'base.template.html' %} {%block content %}
+{% extends 'base.template.html' %}
+{%block content %}
 
-<div>
-    
-            {% if user.is_authenticated %}
-               <a class='btn btn-primary' href="{% url 'view_cart' %}">View Cart</a>
-            {%endif%}
-            {% if not user.is_authenticated %}
-                <a class='btn btn-primary' href="{% url 'login' %}">View Cart</a>
-            {%endif%}
+<style>
+
+ 
+body {
+  flex: 1 0 auto;
+  position: absolute;
+  height: 99.9vh;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  background: url(/media/sky.png);
+  background-repeat: no-repeat;
+  overflow-y: hidden;
+}
+
+.product-img {
+    -webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+	max-width:200px;
+	max-height:200px;
+}
+
+.product-img:hover {
+    -webkit-transform: scale(1.1);
+	transform: scale(1.1);
+}
+
+.product-name {
+  padding-top: 2vh;
+  font-weight: bold;
+  font-size: 15px;
+  letter-spacing:1px;
+  color: #311b92;
+  height: 60px;
+}
+
+.product-cost {
+  font-weight: bold;
+  font-size: 17px;
+  letter-spacing:1px;
+  color: black;
+}
+
+#btn-cart {
+   background-color:#311b92;
+   font-size: 13px;
+   letter-spacing:1px;
+   color: white;
+   border-radius:0px;
+   width: 13vw;
+}
+
+#btn-cart:hover {
+   background-color:#7265ad;
+}
+
+.filter-container {
+    position:absolute;
+    color:white;
+    z-index:3;
+}
+
+#filter-header {
+  font-size: 14px;
+  letter-spacing:1px;
+  text-transform: uppercase;
+}
+
+#filter-content ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.filter-link{
+  text-decoration:none;
+  color:white;
+  font-size: 16px;
+  letter-spacing:1px;
+}
+
+</style>
+
+<div class='container-fluid col-12'>
+<div class='row'>
+    <div class='col-12'>
+        
+        
+            
+             <div class='filter-container col-5 px-3 mx-5 pt-3'>
+  <div class='row'>
+    <div class='col' id='filter-header'>
+      Filter by Country:
+    </div>
+  </div>
+  
+  <div class='row'>
+    <div class='col' id='filter-content'>
+        <ul>
+            <li>
+                <a class='filter-link' href='#'>Japan</a>
+            </li>
+            <li>
+                <a class='filter-link' href='#'>Korea</a>
+            </li>
+            <li>
+                <a class='filter-link' href='#'>Taiwan</a>
+            </li>
+        </ul>
+     
+    </div>
+  </div>
 </div>
+        
+    </div>
+</div>
+  
+  
+  
+  <div class='col-12'>
+         <div class="container-fluid col-lg-12 col-md-10 col-sm-12 pl-5 pr-5 pb-5" style='background-color:none; height: 100vh; overflow-y: auto;'>
+             
+             
+             
+         
 
+             
+             
+             
+             
+             
+             
+             
+            
+            
+            <div id="product-container" class="container-fluid col-lg-8 col-md-8 col-sm-10" style="display: flex; flex-wrap: wrap;">   
 
-<div id="product-container" class="container-fluid col-lg-8 col-md-8 col-sm-10" style="display: flex; flex-wrap: wrap;">   
+   
     
     {%for product in all_products %}
     
-    <div class="card" style="padding: 2%; flex-grow: 1; flex-basis: 33%; display: flex;">
-        <img style="max-width:200px; max-height:200px;" src="{{product.image.url}}" class="card-img-top">
+    <div class="card shadow p-3 mb-5 bg-white" style="position: relative;z-index:1; border:0px;padding: 2%; margin:2%; flex-grow: 1; flex-basis: 25%; display: flex; text-align:center; border-radius:0px;">
+        
         <div class="card-body">
-            <a href="{% url 'productview' product_id=product.id %}"><h5 class="card-title">{{product.name}}</h5></a>
-            <p class="card-text">${{product.getCostInDollars}}0</p>
+            <a href="{% url 'productview' product_id=product.id %}"><img class='product-img' src="{{product.image.url}}" class="card-img-top">
+            
+            <div class='wrap-product pt-2'>
+            <h5 class="product-name" >{{product.name}}</h5></a>
+            <p class="product-cost">${{product.getCostInDollars}}0</p>
+            </div>
             
             {% if user.is_authenticated %}
-            <a href="{% url 'add_to_cart' product_id=product.id %}" class="btn btn-primary">Add to Cart</a>
+            <a id='btn-cart' class="btn p-3 mt-3" href="{% url 'add_to_cart' product_id=product.id %}" role="button">ADD TO CART</a>
             {%endif%}
             {% if not user.is_authenticated %}
-            <a href="{% url 'login' %}" class="btn btn-primary">Add to Cart</a>
+            <a id='btn-cart' class="btn p-3 mt-3" href="{%url 'login' %}" role="button">ADD TO CART</a>
+            
+            
+            
             {%endif%}
         </div>
     </div>
     {%endfor%}
+            
+            
+             
+        
+    </div>
 </div>
+
+
+
+
+
+
+</div>
+</div>
+</div>
+
+
+
 {%endblock%}
+
+
+
+
+
