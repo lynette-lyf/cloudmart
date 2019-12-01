@@ -15,6 +15,7 @@ Happy coding!
 # cloudmart
 
 credits for login form layout: https://codepen.io/T-P/pen/bpWqrr
+cart inspired by: https://dribbble.com/shots/5039057-Shopping-cart-V2
 
 errors: 
 1. static media wont show up after user register

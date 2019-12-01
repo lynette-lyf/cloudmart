@@ -2,25 +2,162 @@
 
 {% block content %}
 
+
+<style>
+  /* CART */
+
+.cart-background.container-fluid {
+  flex: 1 0 auto;
+  position: absolute;
+  height: 88vh;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  background: url(/media/sky.png);
+  background-repeat: no-repeat;
+}
+
+#col-titles #your-cart, #cart-total {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.cart-header, #cart-total-header {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 13px;
+  letter-spacing:2px;
+  color: grey;
+}
+
+.cart-item th p {
+  padding-top: 2vh;
+  font-weight: bold;
+  font-size: 13px;
+  letter-spacing:1px;
+  color: #1e1753;
+}
+
+.cart-item td {
+  padding-top: 4vh;
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing:1px;
+}
+
+#cart-total-header .cart-total-border {
+  border-top: 4px solid black;
+}
+
+#cart-total-header .cart-total-cost {
+  font-weight: bold;
+  font-size: 11px;
+  letter-spacing:1px;
+  color: grey;
+}
+
+#cart-total-header .cart-total-cost span {
+  padding-left: 1vw;
+  color: black;
+  font-size: 16px;
+}
+
+#cart-total-header .wrapper {
+  text-align: center;
+}
+
+#cart-total-header .cart-total-notice {
+  text-transform: none;
+  letter-spacing: 0px;
+  font-size:12px;
+}
+
+.cart-icons, .tnc {
+  text-decoration: none;
+  color: #1e1753;
+}
+
+.cart-icons:hover, .cart-icons:focus,
+.tnc:hover, .tnc:focus {
+  color: #e83e8c;
+}
+</style>
+
+
+<div class="cart-background container-fluid">
+  <div class="container-fluid col-lg-8 col-md-10 col-sm-12 mt-5">
+   
+    <div class='row' id='col-contents'>
+      <div id='your-cart-content' class='col-md-8 col-sm-12 p-5' style='background-color:white; height: 70vh; overflow-y: auto;'>
+       
+          <table class="table table-borderless">
+        
+  <thead>
+    <tr class='cart-header'>
+      <th scope="col">Product</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Total</th>
+      <th scope="col">&nbsp;</th>
+    </tr>
+    
+  </thead>
+
+  <tbody>
+    
+    
+   
+ 
+
 {% for cart_item in all_cart_items %}
-<div class="col-lg-3 col-md-6 mb-4">
-  <img src="{{ cart_item.product.image.url }}" class="mr-3">
-  <div class="media-body">
-    <h5 class="mt-0">{{cart_item.product.name}}</h5>
-    <p>{{cart_item.description}}</p>
-    <p>Cost: ${{cart_item.product.getCostInDollars}}0
-    <br>
-    Quantity: {{ cart_item.quantity }}
-    Total product cost: ${{product_cost}}0
-    <a href="{% url 'remove_from_cart' cart_item_id=cart_item.id%}">Remove</a>
-    </p>
-</div>
+    
+    <tr class='cart-item'>
+      <th scope="row">
+        <img style='max-width: 70px' src="{{ cart_item.product.image.url }}"/>
+        <p>{{cart_item.product.name}}<br>{{cart_item.product.sku}}</p>
+      </th>
+
+      <td>${{cart_item.product.getCostInDollars}}0</td>
+        <td>
+          <a class='cart-icons' href="{% url 'add_one_cart' cart_item_id=cart_item.id%}"><i class="fa fa-plus" aria-hidden="true"></i></a>
+          &nbsp;&nbsp;&nbsp; {{ cart_item.quantity }} &nbsp;&nbsp;&nbsp;
+          
+          	{% if cart_item.quantity > 1 %}
+          <a class='cart-icons' href="{% url 'minus_one_cart' cart_item_id=cart_item.id%}"><i class="fa fa-minus" aria-hidden="true"></i></a>
+            {%endif%}
+            	{% if cart_item.quantity == 1 %}
+             <a class='cart-icons' href="{% url 'remove_from_cart' cart_item_id=cart_item.id%}"><i class="fa fa-minus" aria-hidden="true"></i></a>
+             {%endif%}
+        </td>
+      <td>${{product_cost}}0</td>
+      <td>  <a class='cart-icons' href="{% url 'remove_from_cart' cart_item_id=cart_item.id%}"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a> </td>
+    </tr>
 {%endfor%}
 
-<div class="total-cost">
+   
 
-<p>Your total is ${{total_cost}}0</p>
-<a href="{%url 'charge' %}">Pay</a>
+    
+  </tbody>
+</table>
+
+      </div>
+
+      <div id='cart-total-header' class='col-md-4 col-sm-12 p-5' style='background-color:#ece6ff;'>
+        <p class='cart-total-border'></p>
+        <p class='cart-total-cost'>Total Cost <span>${{total_cost}}0</span></p>
+        <p class='cart-total-notice'>By proceeding, I acknowledge that I have read and agree to the <a class='tnc' href="https://www.termsfeed.com/blog/wp-content/uploads/2019/04/terms-and-conditions-template.pdf">Terms and Conditions</a>.</p>
+        <div class="wrapper"><a class="btn p-3 mt-3" style='background-color:#1e1753; font-size: 13px; color: white; border-radius:0px;' href="{%url 'charge' %}" role="button">Checkout</a></div>
+      </div>
+    </row>
+  </div>
+
+
+
+
+
+
+
+
 </div>
 
 {%endblock%}
