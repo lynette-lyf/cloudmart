@@ -1,7 +1,13 @@
 {% extends 'base.template.html' %} {%block content %}
 
 <div>
-    <a class='btn btn-primary' href="{% url 'view_cart' %}">View Cart</a>
+    
+            {% if user.is_authenticated %}
+               <a class='btn btn-primary' href="{% url 'view_cart' %}">View Cart</a>
+            {%endif%}
+            {% if not user.is_authenticated %}
+                <a class='btn btn-primary' href="{% url 'login' %}">View Cart</a>
+            {%endif%}
 </div>
 
 
@@ -15,8 +21,12 @@
             <a href="{% url 'productview' product_id=product.id %}"><h5 class="card-title">{{product.name}}</h5></a>
             <p class="card-text">${{product.getCostInDollars}}0</p>
             
-            
+            {% if user.is_authenticated %}
             <a href="{% url 'add_to_cart' product_id=product.id %}" class="btn btn-primary">Add to Cart</a>
+            {%endif%}
+            {% if not user.is_authenticated %}
+            <a href="{% url 'login' %}" class="btn btn-primary">Add to Cart</a>
+            {%endif%}
         </div>
     </div>
     {%endfor%}

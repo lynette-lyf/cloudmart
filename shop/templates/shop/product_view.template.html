@@ -11,12 +11,13 @@
    <h4>${{selected_product.getCostInDollars}}0</h4>
 
 
-            <!--Insert form to GET item quantity-->
-            <!--<form class='form' method="POST">-->
-            <!--<label>Quantity</label>-->
-            <!--        <input type='number' class='form-control' min='1' max='{{product.quantity}}' name='product_quantity' required/>-->
-            <!--    </form>-->
+<!--ERROR LIES HERE: ADD TO CART URL-->
                 
- <a href="{% url 'add_to_cart' product_id=selected_product.id %}" class="btn btn-primary">Add to Cart</a>
+ {% if user.is_authenticated %}
+            <a href="{% url 'add_to_cart' product_id=product.id %}" class="btn btn-primary">Add to Cart</a>
+            {%endif%}
+            {% if not user.is_authenticated %}
+            <a href="{% url 'login' %}" class="btn btn-primary">Add to Cart</a>
+            {%endif%}
  
 {%endblock%}

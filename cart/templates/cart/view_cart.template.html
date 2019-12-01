@@ -5,7 +5,6 @@
 
 <style>
   /* CART */
-
 .cart-background.container-fluid {
   flex: 1 0 auto;
   position: absolute;
@@ -16,12 +15,10 @@
   background: url(/media/sky.png);
   background-repeat: no-repeat;
 }
-
 #col-titles #your-cart, #cart-total {
   text-transform: uppercase;
   font-weight: bold;
 }
-
 .cart-header, #cart-total-header {
   text-transform: uppercase;
   font-weight: bold;
@@ -29,57 +26,53 @@
   letter-spacing:2px;
   color: grey;
 }
-
 .cart-item th p {
   padding-top: 2vh;
   font-weight: bold;
   font-size: 13px;
   letter-spacing:1px;
-  color: #1e1753;
+  color: #311b92;
 }
-
 .cart-item td {
   padding-top: 4vh;
   font-weight: bold;
   font-size: 14px;
   letter-spacing:1px;
 }
-
 #cart-total-header .cart-total-border {
-  border-top: 4px solid black;
+  border-top: 4px solid #311b92;
 }
-
 #cart-total-header .cart-total-cost {
   font-weight: bold;
   font-size: 11px;
   letter-spacing:1px;
   color: grey;
 }
-
 #cart-total-header .cart-total-cost span {
   padding-left: 1vw;
   color: black;
   font-size: 16px;
 }
-
 #cart-total-header .wrapper {
   text-align: center;
 }
-
 #cart-total-header .cart-total-notice {
   text-transform: none;
   letter-spacing: 0px;
   font-size:12px;
 }
-
 .cart-icons, .tnc {
   text-decoration: none;
-  color: #1e1753;
+  color: #311b92;
 }
-
 .cart-icons:hover, .cart-icons:focus,
 .tnc:hover, .tnc:focus {
   color: #e83e8c;
+}
+
+.empty-cart {
+  text-align:center;
+  padding-top: 5vh;
 }
 </style>
 
@@ -91,7 +84,8 @@
       <div id='your-cart-content' class='col-md-8 col-sm-12 p-5' style='background-color:white; height: 70vh; overflow-y: auto;'>
        
           <table class="table table-borderless">
-        
+ 
+{% if total_cost != 0 %}
   <thead>
     <tr class='cart-header'>
       <th scope="col">Product</th>
@@ -104,11 +98,6 @@
   </thead>
 
   <tbody>
-    
-    
-   
- 
-
 {% for cart_item in all_cart_items %}
     
     <tr class='cart-item'>
@@ -134,11 +123,21 @@
     </tr>
 {%endfor%}
 
+{%endif%}
+
    
 
     
   </tbody>
+  
 </table>
+{% if total_cost == 0 %}
+<div class='empty-cart'>
+<h1 class='empty-cart-notice'>Your cart is empty.</h1>
+<img style='width: 400px' src='https://i.imgur.com/q2SNbLT.png'/>
+<div class="wrapper"><a class="btn p-3 mt-3" style='background-color:#311b92; font-size: 13px; color: white; border-radius:0px;' href="{%url 'catalog' %}" role="button">BACK TO SHOP</a></div>
+</div>
+{%endif%}
 
       </div>
 
@@ -146,7 +145,13 @@
         <p class='cart-total-border'></p>
         <p class='cart-total-cost'>Total Cost <span>${{total_cost}}0</span></p>
         <p class='cart-total-notice'>By proceeding, I acknowledge that I have read and agree to the <a class='tnc' href="https://www.termsfeed.com/blog/wp-content/uploads/2019/04/terms-and-conditions-template.pdf">Terms and Conditions</a>.</p>
-        <div class="wrapper"><a class="btn p-3 mt-3" style='background-color:#1e1753; font-size: 13px; color: white; border-radius:0px;' href="{%url 'charge' %}" role="button">Checkout</a></div>
+        
+        {% if total_cost == 0 %}
+        <div class="wrapper"><a class="btn disabled p-3 mt-3" style='background-color:#311b92; font-size: 13px; color: white; border-radius:0px;' href="{%url 'charge' %}" role="button">Checkout</a></div>
+        {%endif%}
+        {% if total_cost != 0 %}
+        <div class="wrapper"><a class="btn p-3 mt-3" style='background-color:#311b92; font-size: 13px; color: white; border-radius:0px;' href="{%url 'charge' %}" role="button">Checkout</a></div>
+        {%endif%}
       </div>
     </row>
   </div>

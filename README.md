@@ -18,4 +18,9 @@ credits for login form layout: https://codepen.io/T-P/pen/bpWqrr
 cart inspired by: https://dribbble.com/shots/5039057-Shopping-cart-V2
 
 errors: 
-1. static media wont show up after user register
+1. static media wont show up after user register > redirected to <url>/accounts/
+    a) either fix routing to <url>/
+    b) get static media to work on <url>/accounts/
+
+2. non-user able to view individual product page but registered user cant
+    a) error with {%user auth%} part
