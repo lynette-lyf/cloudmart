@@ -16,30 +16,111 @@
 {%endblock%}
 
 {%block content %}
+
+<style>
+  /* CART */
+.checkout-background.container-fluid {
+  flex: 1 0 auto;
+  position: absolute;
+  height: 88vh;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  background: url(/media/sky.png);
+  background-repeat: no-repeat;
+}
+
+#checkout-paymentform,
+#checkout-orderform .form-group {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 13px;
+  letter-spacing:2px;
+  color: grey;
+}
+
+
+
+/**/
+        .form-group input[type=text], 
+        .form-group input[type=email] {
+           height: 3.5vh;
+           font-size: 15px;
+        }
+        
+        
+    
+        .input-field input[type=date]:focus,
+        .input-field input[type=text]:focus,
+        .input-field input[type=email]:focus,
+        .input-field input[type=password]:focus {
+          border-bottom: 2px solid #e91e63;
+          box-shadow: none;
+        }
+</style>
+
+
+
 <form role="form" method="POST" id="payment-form">
-    <legend>Payment Details</legend>
 
 
-    <div class='alert alert-danger' id='credit-card-errors' style='display:none'>
+<div class="checkout-background container-fluid">
+    
+    <div class="container-fluid col-lg-8 col-md-10 col-sm-12">
+     <div class='alert alert-danger' id='credit-card-errors' style='display:none'>
         <p id='stripe-error-message'></p>
     </div>
-
-    <div class="form-group col-md-6">
+    </div>
+    
+  <div class="container-fluid col-lg-8 col-md-10 col-sm-12 mt-5">
+   
+    <div class='row' id='col-contents'>
+      <div id='checkout-orderform' class='col-md-6 col-sm-12 p-5' style='background-color:#ece6ff; height: 70vh; overflow-y: none;'>
+        
+    <div class="form-group col-md-12">
         {{ order_form | crispy }}
     </div>
 
-    <div class="form-group col-md-6">
-        {{ payment_form | crispy }}
-    </div>
 
-    {% csrf_token %}
+      </div>
+
+      <div id='checkout-paymentform' class='col-md-6 col-sm-12 p-5' style='background-color:white;'>
+       
+        <div class="form-group col-md-12">
+            {{ payment_form | crispy }}
+        </div>
+        
+        {% csrf_token %}
+        <div class="form-group col-md-12">
+        <div class="wrapper"><input class="btn p-3 mt-3" id="submit_payment_btn" style='background-color:#311b92; font-size: 13px; color: white; border-radius:0px;' type="submit" value="Pay ${{total_cost}}0">
+        </div>
+    </div>
+    </row>
+  </div>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
     
     <!--To pass total amount and transaction ID back into the Transaction form -->
     <input type='hidden' value='{{amount}}' name='amount'/>
     <input type='hidden' value='{{transaction.id}}' name='transaction_id'/>
-    <div class="form-group col-md-12">
-        <input class=" btn btn-primary" id="submit_payment_btn" name="commit" type="submit" value="Pay">
-    </div>
-
+    
+     
 
 {% endblock %}

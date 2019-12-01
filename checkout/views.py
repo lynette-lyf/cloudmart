@@ -21,7 +21,7 @@ def checkout(request):
     total_cost = calculate_cart_cost(request)
     
         
-    return render(request, 'checkout/checkout.template.html', {
+    return render(request, 'checkout/charge.template.html', {
         'total_cost': total_cost/100
     })
 

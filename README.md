@@ -24,3 +24,6 @@ errors:
 
 2. non-user able to view individual product page but registered user cant
     a) error with {%user auth%} part
+
+to do:
+create status bar for 1.checkout 2.payment 3.order summary
