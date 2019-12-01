@@ -17,10 +17,10 @@
         <a class="nav-link" href="#" style='color: white;'>Profile</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" href="#">Orders</a>
+        <a class="nav-link" href="{% url 'user_profile' %}">Orders</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'view_wishlist' %}" style='color: white;'>Wishlist</a>
+        <a class="nav-link active" href="{% url 'view_wishlist' %}" style='color: white;'>Wishlist</a>
       </li>
     </ul>
   </div>
@@ -35,7 +35,7 @@
           
       <div class="row no-gutters d-flex">
             <div class="col-md-2 pt-3">
-              <h5 class="card-title"><b>Order #002</b></h5>
+              <h5 class="card-title"><b>Wishlist</b></h5>
               <a href="#" style='color: #ea3a7e; text-transform: uppercase; font-size: 1.5vh; text-decoration: none;'>View Order ➜</a>
             </div>
             
