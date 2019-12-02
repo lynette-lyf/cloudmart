@@ -27,6 +27,7 @@ def catalog_korea(request):
     products = Product.objects.filter(origin=origin_search)
     return render(request, 'shop/catalog.template.html',{
         'products': products,
+
     })
     
 def catalog_taiwan(request):
@@ -50,3 +51,11 @@ def toggleWishlist (request, product_id):
         'wished_items': wished_items,
         'all_products': all_products
     })
+# def toggleWishlist (request, product_id):
+#     wished_items = Wishlist.objects.filter(owner=request.user)
+#     all_products = Product.objects.all()
+#     return render(request, 'shop/catalog.template.html', {
+#         'wished_items': wished_items,
+#         'all_products': all_products
+#     })
+    

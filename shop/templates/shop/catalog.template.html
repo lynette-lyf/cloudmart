@@ -192,6 +192,16 @@ body {
            
               
         
+                <!--NESTED IF STATEMENTS TO SHOW WHEN existing_wislist_item == None or != None -->
+                
+        
+                   {% if product.id in wished_products == product.id in all_products%}
+                   <a id='btn-cart' class="btn p-3 mt-3" href="{% url 'remove_from_wishlist' product_id=product.id %}" role="button">unfavourite</a>
+                   {%else%}
+                <a id='btn-cart' class="btn p-3 mt-3" href="{% url 'add_to_wishlist' product_id=product.id %}" role="button">Favourite</a>
+                    {%endif%}
+               
+                
                 
            
             {%endif%}

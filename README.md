@@ -14,9 +14,12 @@ or visit https://docs.aws.amazon.com/console/cloud9/ for our documentation.
 Happy coding!
 # cloudmart
 
-credits for login form layout: https://codepen.io/T-P/pen/bpWqrr
+!!credits!!
+parallax effect on mouse move: https://codepen.io/GreenSock/pen/OeqgrZ
+login form layout: https://codepen.io/T-P/pen/bpWqrr
 cart inspired by: https://dribbble.com/shots/5039057-Shopping-cart-V2
 image hover effects: https://codepen.io/nxworld/pen/ZYNOBZ
+
 
 errors: 
 1. [/shop/catalog.template.html] Show and hide Favourites button using for-loop (if Catalog product.id == Wishlist product.id, {url remove_from_wishlist})
