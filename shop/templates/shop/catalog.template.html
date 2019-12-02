@@ -88,6 +88,7 @@ body {
   letter-spacing:1px;
 }
 
+
 </style>
 
 <div class='container-fluid col-12'>
@@ -167,9 +168,9 @@ body {
                 
            
            <div class='card-title'>
-            <a style='flex-direction: row; position: absolute; right: 3vw' href="{% url 'remove_from_wishlist' product_id=product.id %}" data-toggle="tooltip" data-placement="right" title="Remove from wishlist"><i style='color: red;' class="fa fa-heart fa-2x" aria-hidden="true"></i></a>
+            <a class='wishlist-btn' style='flex-direction: row; position: absolute; right: 3vw' href="{% url 'remove_from_wishlist' product_id=product.id %}" data-toggle="tooltip" data-placement="right" title="Remove from wishlist"><i style='color: #311b92;' class="fa fa-heart fa-2x" aria-hidden="true"></i></a>
                 
-            <a style='flex-direction: row; position: absolute; right:1vw;' href="{% url 'add_to_wishlist' product_id=product.id %}" data-toggle="tooltip" data-placement="right" title="Add to wishlist"><i style='color: grey' class="fa fa-heart-o fa-2x" aria-hidden="true"></i></a>
+            <a class='wishlist-btn' style='flex-direction: row; position: absolute; right:1vw;' href="{% url 'add_to_wishlist' product_id=product.id %}" data-toggle="tooltip" data-placement="right" title="Add to wishlist"><i style='color: #311b92' class="fa fa-heart-o fa-2x" aria-hidden="true"></i></a>
             </div>
            
            
