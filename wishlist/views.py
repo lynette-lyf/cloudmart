@@ -31,13 +31,13 @@ def add_to_wishlist(request, product_id):
         new_wishlist_item.quantity = 1
         new_wishlist_item.save()
     else:
-        # increases its quantity
-        existing_wishlist_item.quantity += 0
+        # if wishlist item exist, no changes will be made and item will remain in wishlist
         existing_wishlist_item.save()
     return redirect(reverse('view_wishlist'))
 
-def remove_from_wishlist(request, wishlist_id):
-    existing_wishlist_item = Wishlist.objects.get(pk=wishlist_id)
+def remove_from_wishlist(request, product_id):
+    wish_product = Product.objects.get(pk=product_id)
+    existing_wishlist_item = Wishlist.objects.get(product=wish_product)
     existing_wishlist_item.delete()
-    # BEST TO ROUTE IT TO USER'S PREVIOUS PAGE
+    # BEST TO ROUTE IT TO CURRENT PAGE instead of wishlist
     return redirect(reverse('view_wishlist'))

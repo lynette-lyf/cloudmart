@@ -14,25 +14,27 @@ or visit https://docs.aws.amazon.com/console/cloud9/ for our documentation.
 Happy coding!
 # cloudmart
 
-credits for login form layout: https://codepen.io/T-P/pen/bpWqrr
+!!credits!!
+parallax effect on mouse move: https://codepen.io/GreenSock/pen/OeqgrZ
+login form layout: https://codepen.io/T-P/pen/bpWqrr
 cart inspired by: https://dribbble.com/shots/5039057-Shopping-cart-V2
 image hover effects: https://codepen.io/nxworld/pen/ZYNOBZ
 
-errors: 
-1. static media wont show up after user register > redirected to <url>/accounts/
-    a) either fix routing to <url>/
-    b) get static media to work on <url>/accounts/ COMPLETED
 
+errors: 
+
+
+1. Redirect user to previous page after clicking on favourite button
+
+1. Wishlist button: remove_from_wishlist not working @ catalog.template.html
+   
 2. non-user able to view individual product page but registered user cant
     a) error with {%user auth%} part
 
-3. dont know how to filter by origin in shop:
- ERROR MESSAGE - invalid literal for int() with base 10: 'Japan'
 
-4. Wishlist button: remove_from_wishlist not working @ catalog.template.html
-   
 
 to do:
-create status bar for 1.checkout 2.payment 3.order summary
+create status bar for 1.checkout 2.payment 3.order summary (use transform property(CSS) on pageload(jQuery))
 layout for product page
-layout for wishlist and catalog
+improve layout for wishlist and catalog wishlist buttons
+remove submit popup upon submitting pay button
