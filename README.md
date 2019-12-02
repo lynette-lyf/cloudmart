@@ -19,20 +19,14 @@ cart inspired by: https://dribbble.com/shots/5039057-Shopping-cart-V2
 image hover effects: https://codepen.io/nxworld/pen/ZYNOBZ
 
 errors: 
-1. static media wont show up after user register > redirected to <url>/accounts/
-    a) either fix routing to <url>/
-    b) get static media to work on <url>/accounts/ COMPLETED
+1. [/shop/catalog.template.html] Show and hide Favourites button using for-loop (if Catalog product.id == Wishlist product.id, {url remove_from_wishlist})
+2. [/cart/views.py] Get total cost of EACH product - individual product cost * price
+3. Delete wishlist item once it is carted
 
-2. non-user able to view individual product page but registered user cant
-    a) error with {%user auth%} part
-
-3. dont know how to filter by origin in shop:
- ERROR MESSAGE - invalid literal for int() with base 10: 'Japan'
-
-4. Wishlist button: remove_from_wishlist not working @ catalog.template.html
-   
 
 to do:
-create status bar for 1.checkout 2.payment 3.order summary
+
 layout for product page
 layout for wishlist and catalog
+
+create status bar for 1.checkout 2.payment 3.order summary

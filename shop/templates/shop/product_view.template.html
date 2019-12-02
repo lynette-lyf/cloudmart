@@ -14,7 +14,7 @@
 <!--ERROR LIES HERE: ADD TO CART URL-->
                 
  {% if user.is_authenticated %}
-            <a href="{% url 'add_to_cart' product_id=product.id %}" class="btn btn-primary">Add to Cart</a>
+            <a href="{% url 'add_to_cart' product_id=selected_product.id %}" class="btn btn-primary">Add to Cart</a>
             {%endif%}
             {% if not user.is_authenticated %}
             <a href="{% url 'login' %}" class="btn btn-primary">Add to Cart</a>
