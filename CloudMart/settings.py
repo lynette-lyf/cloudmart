@@ -141,6 +141,7 @@ AUTHENTICATION_BACKENDS = (
 # To redirect user to index
 LOGIN_URL = '/'
 LOGOUT_URL = '/'
+REGISTER_URL = '/'
 
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

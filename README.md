@@ -21,7 +21,7 @@ image hover effects: https://codepen.io/nxworld/pen/ZYNOBZ
 errors: 
 1. static media wont show up after user register > redirected to <url>/accounts/
     a) either fix routing to <url>/
-    b) get static media to work on <url>/accounts/
+    b) get static media to work on <url>/accounts/ COMPLETED
 
 2. non-user able to view individual product page but registered user cant
     a) error with {%user auth%} part
@@ -29,5 +29,10 @@ errors:
 3. dont know how to filter by origin in shop:
  ERROR MESSAGE - invalid literal for int() with base 10: 'Japan'
 
+4. Wishlist button: remove_from_wishlist not working @ catalog.template.html
+   
+
 to do:
 create status bar for 1.checkout 2.payment 3.order summary
+layout for product page
+layout for wishlist and catalog

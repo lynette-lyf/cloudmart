@@ -65,7 +65,7 @@ def register(request):
                 messages.success(request, "You have registered successfully")
             else:
                 messages.error(request, "You failed to register")
-            return redirect(reverse('index'))
+            return redirect('%s?userAction=%s' % (settings.REGISTER_URL, request.path))
         else:
             return render(request, "accounts/register.template.html", {
                 'form': form
