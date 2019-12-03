@@ -46,7 +46,7 @@ def add_to_wishlist(request, product_id):
         # if wishlist item exist, no changes will be made and item will remain in wishlist
         existing_wishlist_item.save()
     
-    message = format_html('Product has been added to your <a href="{}">wishlist</a>.', reverse('view_wishlist'))
+    message = format_html('Product has been <span style="color:#28a745;">added</span> to your <a style="color: #311b92; text-decoration: underline;" href="{}">wishlist</a>.', reverse('view_wishlist'))
     messages.success(request, message)
     return redirect(reverse('catalog'))
 
@@ -54,5 +54,6 @@ def remove_from_wishlist(request, product_id):
     wish_product = Product.objects.get(pk=product_id)
     existing_wishlist_item = Wishlist.objects.get(product=wish_product)
     existing_wishlist_item.delete()
-    messages.success(request, "Product has been removed from your wishlist.")
+    message = format_html('Product has been <span style="color:#b53737;">removed</span> from your <a style="color: #311b92; text-decoration: underline;" href="{}">wishlist</a>.', reverse('view_wishlist'))
+    messages.success(request, message)
     return redirect(reverse('catalog'))

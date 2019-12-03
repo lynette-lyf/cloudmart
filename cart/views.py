@@ -49,7 +49,7 @@ def add_to_cart(request, product_id):
         # increases its quantity
         existing_cart_item.quantity += 1
         existing_cart_item.save()
-    message = format_html('Product has been added to <a href="{}">cart</a>.', reverse('view_cart'))
+    message = format_html('Product has been <span style="color:#28a745;">added</span> to <a style="color: #311b92; text-decoration: underline;" href="{}">cart</a>.', reverse('view_cart'))
     messages.success(request, message)
     return redirect(reverse('catalog'))
     
@@ -57,7 +57,8 @@ def remove_from_cart(request, cart_item_id):
  
     existing_cart_item = CartItem.objects.get(pk=cart_item_id)
     existing_cart_item.delete()
-    messages.success(request, "Product has been removed from cart.")
+    message = format_html('Product has been <span style="color:#b53737;">removed</span> from <a style="color: #311b92; text-decoration: underline;" href="{}">cart</a>.', reverse('view_cart'))
+    messages.success(request, message)
     return redirect(reverse('view_cart'))
 
 def add_one_cart(request, cart_item_id):

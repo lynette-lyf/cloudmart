@@ -29,6 +29,29 @@
 	<title>Cloudmart</title>
 
 </head>
+<style>
+	.notification {
+		position: absolute; top:0px;width:100vw;background-color: white; text-align:center;font-size: 2vh; font-weight:bold; opacity:0.9;
+		 -webkit-animation: 0.5s ease-out 0s 1 notification;
+		
+	}
+	
+
+
+@-webkit-keyframes notification {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity:0.8;
+  }
+ 
+  
+}
+
+</style>
 <body>
       <header>
 
@@ -78,13 +101,13 @@
   </header>
 
  {% if messages %}
- {% autoescape off %}
     {% for m in messages %}
-    <div class='alert alert-success'>
+    <div class='notification p-4'>
     {{ m }}
+    <span class='close' ><a style='text-decoration:none; color: #311b92;' href=""><i class="fa fa-times-circle" aria-hidden="true"></i></a></span>
     </div>
     {% endfor %}
-  {% endautoescape %}
+  
   {% endif %}
   
 
