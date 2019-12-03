@@ -1,7 +1,6 @@
 $(function() {
     // #1 - when the form is submitted
     $("#payment-form").submit(function() {
-        alert("submitted")
         var form = this;
         var card = {
             number: $("#id_credit_card_number").val(),
@@ -15,8 +14,7 @@ $(function() {
             $("#credit-card-errors").hide();
             $("#id_stripe_id").val(response.id) // save the token from stripe (response.id) as the value for the hidden field
 
-            // Prevent the credit card details from being submitted
-            // to our server
+            // Prevent the credit card details from being submitted to our server
             $("#id_credit_card_number").removeAttr('name');
             $("#id_cvv").removeAttr('name');
             $("#id_expiry_month").removeAttr('name');

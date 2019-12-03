@@ -18,11 +18,9 @@ def calculate_cart_cost(request):
 
 # Create your views here.
 def checkout(request):
-    total_cost = calculate_cart_cost(request)
-    
-        
+    amount = calculate_cart_cost(request)
     return render(request, 'checkout/charge.template.html', {
-        'total_cost': total_cost/100
+        'amount': amount/100
     })
 
 def charge(request):

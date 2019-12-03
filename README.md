@@ -23,6 +23,7 @@ image hover effects: https://codepen.io/nxworld/pen/ZYNOBZ
 
 errors: 
 3. Delete wishlist item once it is carted
+4. Remove 'payment success alert popup'
 
 
 to do:

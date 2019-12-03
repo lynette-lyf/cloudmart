@@ -1,5 +1,6 @@
 {% extends 'base.template.html' %}
 {% load crispy_forms_tags %}
+{% load mathfilters %}
 {% load static %}
 
 {%block footer_js %}
@@ -92,7 +93,7 @@
         
         {% csrf_token %}
         <div class="form-group col-md-12">
-        <div class="wrapper"><input class="btn p-3 mt-3" id="submit_payment_btn" style='background-color:#311b92; font-size: 13px; color: white; border-radius:0px;' type="submit" value="Pay ${{total_cost}}0">
+        <div class="wrapper"><input class="btn p-3 mt-3" id="submit_payment_btn" style='background-color:#311b92; font-size: 13px; color: white; border-radius:0px;' type="submit" value="Pay ${{ amount| div:100}}0">
         </div>
     </div>
     </row>
