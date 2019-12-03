@@ -3,6 +3,7 @@ from .models import CartItem
 from shop.models import Product
 from wishlist.models import Wishlist
 from django.contrib import messages
+from django.utils.html import format_html
 
 # Create your views here.
 
@@ -48,7 +49,8 @@ def add_to_cart(request, product_id):
         # increases its quantity
         existing_cart_item.quantity += 1
         existing_cart_item.save()
-    messages.success(request, "Product has been added to cart.")
+    message = format_html('Product has been added to <a href="{}">cart</a>.', reverse('view_cart'))
+    messages.success(request, message)
     return redirect(reverse('catalog'))
     
 def remove_from_cart(request, cart_item_id):

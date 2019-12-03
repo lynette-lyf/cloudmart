@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse
 from .models import Wishlist
 from shop.models import Product
 from django.contrib import messages
+from django.utils.html import format_html
 
 # Create your views here.
 
@@ -44,12 +45,14 @@ def add_to_wishlist(request, product_id):
     else:
         # if wishlist item exist, no changes will be made and item will remain in wishlist
         existing_wishlist_item.save()
-    messages.success(request, "Item has been added to your wishlist.")
+    
+    message = format_html('Product has been added to your <a href="{}">wishlist</a>.', reverse('view_wishlist'))
+    messages.success(request, message)
     return redirect(reverse('catalog'))
 
 def remove_from_wishlist(request, product_id):
     wish_product = Product.objects.get(pk=product_id)
     existing_wishlist_item = Wishlist.objects.get(product=wish_product)
     existing_wishlist_item.delete()
-    messages.success(request, "Item has been removed from your wishlist.")
+    messages.success(request, "Product has been removed from your wishlist.")
     return redirect(reverse('catalog'))

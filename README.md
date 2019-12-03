@@ -22,13 +22,12 @@ image hover effects: https://codepen.io/nxworld/pen/ZYNOBZ
 
 
 errors: 
-3. Delete wishlist item once it is carted
-4. Remove 'payment success alert popup'
-
+1. Delete wishlist item once it is carted***
+2. if existing item alr in cart, show error message
+3. if existing item alr in wishlist, show error message
 
 to do:
-
-
-1. layout for wishlist and individual product page*
+1. layout for individual product page*********
+2. edit alert button
 2. add 2 more products for each country
 3. create status bar for 1.checkout 2.payment 3.order summary

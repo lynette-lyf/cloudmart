@@ -1,6 +1,51 @@
 {% extends 'base.template.html' %}
 {%block content%}
 
+<style>
+ 
+
+.product-img {
+    -webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+	max-width:200px;
+	max-height:200px;
+}
+.product-img:hover {
+    -webkit-transform: scale(1.1);
+	transform: scale(1.1);
+}
+.product-name {
+  padding-top: 2vh;
+  font-weight: bold;
+  font-size: 15px;
+  letter-spacing:1px;
+  color: #311b92;
+  height: 60px;
+}
+.product-cost {
+  font-weight: bold;
+  font-size: 17px;
+  letter-spacing:1px;
+  color: black;
+}
+#btn-cart {
+   background-color:#311b92;
+   font-size: 13px;
+   letter-spacing:1px;
+   color: white;
+   border-radius:0px;
+   width: 13vw;
+}
+#btn-cart:hover {
+   background-color:#7265ad;
+}
+
+
+
+</style>
+
 <header style='height: 30vh!important; z-index:1'>
     <div class='user-details' style='position: relative; left: 11vw; padding-top: 6vh;'>
 <h1 style='font-size: 5vh; color: white;'>Welcome, {{ user }}</h1>
@@ -14,73 +59,55 @@
   <div class="card-header" style='background-color: #1e1753; position: absolute; z-index:2; top:-6.1vh;'>
     <ul class="nav nav-tabs card-header-tabs">
       <li class="nav-item">
-        <a class="nav-link" href="#" style='color: white;'>Profile</a>
+        <a class="nav-link" style='text-decoration:none; color: white;' href="{% url 'user_profile' %}">Orders</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'user_profile' %}">Orders</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" href="{% url 'view_wishlist' %}" style='color: white;'>Wishlist</a>
+        <a class="nav-link active" href="{% url 'view_wishlist' %}" style='color: black;'>Wishlist</a>
       </li>
     </ul>
   </div>
+ </div>
+ </div>
+ 
+ 
+ <div class="container-fluid col-lg-7 col-md-9 col-sm-12" style="display: flex; flex-wrap: wrap;">
+ 
+{% if  total_cost == 0 %}
+<div class='empty-cart pt-5' style='text-align: center; position: relative; left:20vw;'>
+  <h1 class='empty-cart-notice'>Your wishlist is empty.</h1>
+  <img style='width: 400px' src='https://i.imgur.com/q2SNbLT.png'/>
+  <div class="wrapper"><a class="btn p-3 mt-3" style='background-color:#311b92; font-size: 13px; color: white; border-radius:0px;' href="{%url 'catalog' %}" role="button">BACK TO SHOP</a></div>
+</div>
+{%endif%}
+
+
+  {% for wishlist_item in all_wishlist_items %}
+  <div class="card shadow p-3 mb-3 bg-white" style="position: relative;z-index:1; border:0px;padding: 1%; margin:1%; flex-grow: 1; flex-basis: 25%; display: flex; text-align:center; border-radius:0px;"> 
+    
+    
+    <div class='card-title'>
+      <!--url remove from wishlist-->
+    <a class='wishlist-btn' style='flex-direction: row; position: absolute; right: 1vw' href="#" data-toggle="tooltip" data-placement="right" title="Remove from wishlist"><i style='color: #311b92;' class="fa fa-heart fa-2x" aria-hidden="true"></i></a>
+    </div>
+    
+    <div class="card-body">
+      <!--url "product_view" #-->
+      <a href="#"><img class='product-img' src="{{ wishlist_item.product.image.url }}" class="card-img-top">
+                <div class='wrap-product pt-2'>
+                    <h5 class="product-name" >{{wishlist_item.product.name}}</h5></a>
+                    <p class="product-cost">${{wishlist_item.product.getCostInDollars}}0</p>
+                </div>
+      
+      <!--url 'add_to_cart' as #-->
+      <a id='btn-cart' class="btn p-3 mt-3" href="#" role="button">ADD TO CART</a>
   
-          
-    {% if  total_cost == 0 %}
-    <div class='empty-cart'>
-      <h1 class='empty-cart-notice'>Your wishlist is empty.</h1>
-      <img style='width: 400px' src='https://i.imgur.com/q2SNbLT.png'/>
-      <div class="wrapper"><a class="btn p-3 mt-3" style='background-color:#311b92; font-size: 13px; color: white; border-radius:0px;' href="{%url 'catalog' %}" role="button">BACK TO SHOP</a></div>
-    </div>
-    {%endif%}
-
-
-
-   {% for wishlist_item in all_wishlist_items %}
-  <div class="card-body d-flex flex-column">
-    
-    <!--Order card layout-->
-   
-    <div class="card col-lg-6 col-sm-10 mt-3 mb-3">
-      <div class="card-body">
-        
-
-          
-      <div class="row no-gutters d-flex">
-            <div class="col-md-2 pt-3">
-             
-    
-
-              <h5 class="card-title"><b>Wishlist</b></h5>
-             <p>{{wishlist_item.product.name}}</p>
-             <img style='width:300px' src="{{ wishlist_item.product.image.url }}"/>
-             
-             <!--ERROR LIES HERE - CANT ADD REMOVE WISHLIST BUTTON-->
-            
-      </div>
-      </div>
-    </div>
-            
-            
-      
-      
-    </div>
-
-    
+           
   </div>
-  
-  
-  
-  
-  
-  
-  
-  
-  {%endfor%}
-  
-  
-  
+  </div>
+      {%endfor%}
 </div>
 </div>
-
+</div>
 {% endblock %}
+
+    
