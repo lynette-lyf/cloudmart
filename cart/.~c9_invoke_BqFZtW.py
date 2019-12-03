@@ -2,12 +2,15 @@ from django.shortcuts import render, redirect, reverse
 from .models import CartItem
 from shop.models import Product
 from wishlist.models import Wishlist
+
+
 from django.contrib import messages
 
 # Create your views here.
 
 
-
+# Calculate total cost of a single product
+#(())
     
 # Calculate total cost of cart
 def calculate_cart_cost(request):
@@ -15,16 +18,22 @@ def calculate_cart_cost(request):
     amount = 0
     for cart_item in all_cart_items:
         amount += cart_item.product.cost * cart_item.quantity
+    
     return amount
 
+    
 def view_cart(request):
     # request.user = user that is currently logged in
     all_cart_items = CartItem.objects.filter(owner=request.user)
     # total_cost = calculate total cost in cart
     total_cost = calculate_cart_cost(request)
+    # product_cost = calculate total cost of a single product
+    #(())
+    
     
     return render(request, 'cart/view_cart.template.html', {
         'all_cart_items': all_cart_items,
+       #(())
         'total_cost': total_cost/100
     })
 
@@ -48,14 +57,14 @@ def add_to_cart(request, product_id):
         # increases its quantity
         existing_cart_item.quantity += 1
         existing_cart_item.save()
-    messages.success(request, "Product has been added to cart.")
+        messages.success(request, "Item has been added to cart.")
     return redirect(reverse('catalog'))
     
 def remove_from_cart(request, cart_item_id):
  
     existing_cart_item = CartItem.objects.get(pk=cart_item_id)
     existing_cart_item.delete()
-    messages.success(request, "Product has been removed from cart.")
+    messages.success(request, "Item has been removed from cart.")
     return redirect(reverse('view_cart'))
 
 def add_one_cart(request, cart_item_id):

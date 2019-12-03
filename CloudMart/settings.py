@@ -173,3 +173,5 @@ STATICFILES_STORAGE = "custom_storages.StaticStorage"
 MEDIAFILES_LOCATION="media"
 DEFAULT_FILE_STORAGE='custom_storages.MediaStorage'
 
+MESSAGE_STORAGE='django.contrib.messages.storage.session.SessionStorage'
+

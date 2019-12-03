@@ -88,6 +88,26 @@ body {
   letter-spacing:1px;
 }
 
+#view-cart {
+    text-decoration: none;
+    list-style: none;
+    border-width:thin;
+    border-style: solid;
+    padding: 1vw;
+    margin-bottom: 5vh;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: transparent;
+    color: white;
+    border-color: white;
+}
+
+#view-cart:hover, #view-cart:active {
+    background-color: #ea3a7e;
+}
+
 
 </style>
 
@@ -97,15 +117,21 @@ body {
         
         
             
-             <div class='filter-container col-5 px-3 mx-5 pt-3'>
+             <div class='filter-container col-5 px-3 mx-5 pt-5'>
+                 
+                 <a id='view-cart' href="{%url 'view_cart' %}">View Cart</a>
   <div class='row'>
-    <div class='col' id='filter-header'>
+    <div class='col mt-5' id='filter-header'>
+  
+               
+    
       Filter by Country:
     </div>
   </div>
       <br>
   <div class='row'>
     <div class='col mt-2' id='filter-content'>
+       
         <ul>
             <li>
                 <a class='filter-link' href=" {%url 'catalog_japan' %}">Japan</a>
@@ -136,17 +162,6 @@ body {
   <div class='col-12'>
          <div class="container-fluid col-lg-12 col-md-10 col-sm-12 pl-5 pr-5 pb-5" style='background-color:none; height: 100vh; overflow-y: auto;'>
              
-             
-             
-         
-
-             
-             
-             
-             
-             
-             
-             
             
             
             <div id="product-container" class="container-fluid col-lg-8 col-md-8 col-sm-10" style="display: flex; flex-wrap: wrap;">   
@@ -157,24 +172,15 @@ body {
     
     <div class="card shadow p-3 mb-5 bg-white" style="position: relative;z-index:1; border:0px;padding: 2%; margin:2%; flex-grow: 1; flex-basis: 25%; display: flex; text-align:center; border-radius:0px;">
            
-           
-           
-           <!--WISHLIST-->
-           <!--   {% if product.id in wished_products == product.id in all_products%}-->
-                <!--   <a id='btn-cart' class="btn p-3 mt-3" href="{% url 'remove_from_wishlist' product_id=product.id %}" role="button">unfavourite</a>-->
-                <!--   {%else%}-->
-                <!--<a id='btn-cart' class="btn p-3 mt-3" href="{% url 'add_to_wishlist' product_id=product.id %}" role="button">Favourite</a>-->
-                <!--    {%endif%}-->
-                
-           
            <div class='card-title'>
-            <a class='wishlist-btn' style='flex-direction: row; position: absolute; right: 3vw' href="{% url 'remove_from_wishlist' product_id=product.id %}" data-toggle="tooltip" data-placement="right" title="Remove from wishlist"><i style='color: #311b92;' class="fa fa-heart fa-2x" aria-hidden="true"></i></a>
-                
+            {% if product.id in wished_products %}
+            <a class='wishlist-btn' style='flex-direction: row; position: absolute; right: 1vw' href="{% url 'remove_from_wishlist' product_id=product.id %}" data-toggle="tooltip" data-placement="right" title="Remove from wishlist"><i style='color: #311b92;' class="fa fa-heart fa-2x" aria-hidden="true"></i></a>
+            {%else%} 
             <a class='wishlist-btn' style='flex-direction: row; position: absolute; right:1vw;' href="{% url 'add_to_wishlist' product_id=product.id %}" data-toggle="tooltip" data-placement="right" title="Add to wishlist"><i style='color: #311b92' class="fa fa-heart-o fa-2x" aria-hidden="true"></i></a>
+           {%endif%}
             </div>
-           
-           
-           
+            
+       
         <div class="card-body">
             
             <a href="{% url 'productview' product_id=product.id %}"><img class='product-img' src="{{product.image.url}}" class="card-img-top">
@@ -189,30 +195,11 @@ body {
            
             {% if user.is_authenticated %}
             <a id='btn-cart' class="btn p-3 mt-3" href="{% url 'add_to_cart' product_id=product.id %}" role="button">ADD TO CART</a>
-           
-              
-        
-                <!--NESTED IF STATEMENTS TO SHOW WHEN existing_wislist_item == None or != None -->
-                
-        
-                   {% if product.id in wished_products == product.id in all_products%}
-                   <a id='btn-cart' class="btn p-3 mt-3" href="{% url 'remove_from_wishlist' product_id=product.id %}" role="button">unfavourite</a>
-                   {%else%}
-                <a id='btn-cart' class="btn p-3 mt-3" href="{% url 'add_to_wishlist' product_id=product.id %}" role="button">Favourite</a>
-                    {%endif%}
-               
-                
-                
-           
             {%endif%}
             
             {% if not user.is_authenticated %}
             <a id='btn-cart' class="btn p-3 mt-3" href="{%url 'login' %}" role="button">ADD TO CART</a>
             <a id='btn-cart' class="btn p-3 mt-3" href="{%url 'login' %}" role="button">Favourite</a>
-            
-            
-            
-            
             {%endif%}
         </div>
     </div>

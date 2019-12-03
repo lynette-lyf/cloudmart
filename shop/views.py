@@ -1,14 +1,17 @@
 from django.shortcuts import render
 from .models import Product, Origin
 from wishlist.models import Wishlist
+from django.contrib import messages
 
 # Create your views here.
 
 def catalog(request):
     # View all products
     products = Product.objects.all()
-    # Pass in wishlist products to the catalog
-    wished_products = Wishlist.objects.filter(owner=request.user)
+    # Pass in wishlist products to the catalog (list comprehension)
+    wished_products = [ wished['product__id'] for wished in Wishlist.objects.filter(owner=request.user).values('product__id') ]
+    print (wished_products)
+    
     return render(request, 'shop/catalog.template.html',{
         'products': products,
         'wished_products': wished_products
@@ -51,11 +54,3 @@ def toggleWishlist (request, product_id):
         'wished_items': wished_items,
         'all_products': all_products
     })
-# def toggleWishlist (request, product_id):
-#     wished_items = Wishlist.objects.filter(owner=request.user)
-#     all_products = Product.objects.all()
-#     return render(request, 'shop/catalog.template.html', {
-#         'wished_items': wished_items,
-#         'all_products': all_products
-#     })
-    

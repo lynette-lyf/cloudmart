@@ -22,14 +22,12 @@ image hover effects: https://codepen.io/nxworld/pen/ZYNOBZ
 
 
 errors: 
-1. [/shop/catalog.template.html] Show and hide Favourites button using for-loop (if Catalog product.id == Wishlist product.id, {url remove_from_wishlist})
-2. [/cart/views.py] Get total cost of EACH product - individual product cost * price
 3. Delete wishlist item once it is carted
 
 
 to do:
 
-layout for product page
-layout for wishlist and catalog
 
-create status bar for 1.checkout 2.payment 3.order summary
+1. layout for wishlist and individual product page*
+2. add 2 more products for each country
+3. create status bar for 1.checkout 2.payment 3.order summary
