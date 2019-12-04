@@ -42,8 +42,8 @@ class LineItem(models.Model):
     sku = models.CharField(max_length=255, blank=False)
     name = models.CharField(max_length=255, blank=False)
     cost = models.IntegerField(blank=False)
-    # quantity = models.IntegerField(blank=False, default=0) <-print quantity in LineItem
+    # define quantity of product bought
     transaction = models.ForeignKey('Transaction', on_delete=models.CASCADE)
     
     def __str__(self):
-        return "Transaction: " + str(self.transaction) + " | " + self.product.name + " : " + self.sku
+        return "Transaction: " + str(self.transaction) + " | " + self.product.name + " : " + self.sku + "Qty: " + str(self.quantity)

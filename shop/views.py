@@ -11,6 +11,9 @@ def catalog(request):
     products = Product.objects.all()
     # Pass in wishlist products to the catalog (list comprehension)
     print(request.user)
+    
+    # when Line15 & 16 ADDED, con: remove_wishlist btn cannot be called; pro: everything else works
+    # if Line 15 & 16 REMOVED, con: AnonymousUser catalog page cannot be viewed; pro: AuthUser catalog page can be viewed, wishlist btn works
     wished_products = None
     if request.user == "AnonymousUser":
         wished_products = [ wished['product__id'] for wished in Wishlist.objects.filter(owner=request.user).values('product__id') ]
