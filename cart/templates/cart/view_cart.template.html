@@ -120,15 +120,20 @@
 
       <td>${{cart_item.product.getCostInDollars}}0</td>
         <td>
-          <a class='cart-icons' href="{% url 'add_one_cart' cart_item_id=cart_item.id%}"><i class="fa fa-plus" aria-hidden="true"></i></a>
-          &nbsp;&nbsp;&nbsp; {{ cart_item.quantity }} &nbsp;&nbsp;&nbsp;
-          
           	{% if cart_item.quantity > 1 %}
           <a class='cart-icons' href="{% url 'minus_one_cart' cart_item_id=cart_item.id%}"><i class="fa fa-minus" aria-hidden="true"></i></a>
             {%endif%}
             	{% if cart_item.quantity == 1 %}
              <a class='cart-icons' href="{% url 'remove_from_cart' cart_item_id=cart_item.id%}"><i class="fa fa-minus" aria-hidden="true"></i></a>
              {%endif%}
+          
+          
+          &nbsp;&nbsp;&nbsp; {{ cart_item.quantity }} &nbsp;&nbsp;&nbsp;
+          
+          <a class='cart-icons' href="{% url 'add_one_cart' cart_item_id=cart_item.id%}"><i class="fa fa-plus" aria-hidden="true"></i></a>
+          
+          
+          
         </td>
       <td>${% widthratio cart_item.quantity 1 cart_item.product.getCostInDollars %}.00</td>
       <td>  <a class='cart-icons' href="{% url 'remove_from_cart' cart_item_id=cart_item.id%}"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a> </td>

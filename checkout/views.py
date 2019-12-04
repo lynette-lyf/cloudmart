@@ -108,7 +108,6 @@ def charge(request):
                     messages.error(request, "Your card has been declined")
             except stripe.error.CardError:
                 messages.error(request, "Your card was declined!")
-            
         else:
             return render(request, 'checkout/charge.template.html', {
             'order_form' : order_form,

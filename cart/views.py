@@ -49,8 +49,11 @@ def add_to_cart(request, product_id):
         # increases its quantity
         existing_cart_item.quantity += 1
         existing_cart_item.save()
+        
+    carted_wishlist_item(request,product_id)
     message = format_html('Product has been <span style="color:#28a745;">added</span> to <a style="color: #311b92; text-decoration: underline;" href="{}">cart</a>.', reverse('view_cart'))
     messages.success(request, message)
+    
     return redirect(reverse('catalog'))
     
 def remove_from_cart(request, cart_item_id):
@@ -73,11 +76,8 @@ def minus_one_cart(request, cart_item_id):
     existing_cart_item.save()
     return redirect(reverse('view_cart'))
 
-# def carted_wishlist_item(request, product_id):
-#     existing_wishlist_item = Wishlist.objects.filter(owner=request.user, product=product).first()
-#     existing_cart_item = CartItem.objects.filter(owner=request.user, product=product).first()
-#     for product in all_products:
-#         if existing_wishlist_item.product.id == existing_cart_item.product.id:
-#             existing_wishlist_item.delete()
-#         else:
-#             pass
+def carted_wishlist_item(request, product_id):
+    product = Product.objects.get(id=product_id)
+    existing_wishlist_item = Wishlist.objects.filter(owner=request.user, product=product).first()
+    if existing_wishlist_item != None:
+        existing_wishlist_item.delete()

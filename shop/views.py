@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Product, Origin
 from wishlist.models import Wishlist
 from django.contrib import messages
+# from cart.views import calculate_cart_cost
 
 # Create your views here.
 
@@ -9,7 +10,10 @@ def catalog(request):
     # View all products
     products = Product.objects.all()
     # Pass in wishlist products to the catalog (list comprehension)
-    wished_products = [ wished['product__id'] for wished in Wishlist.objects.filter(owner=request.user).values('product__id') ]
+    print(request.user)
+    wished_products = None
+    if request.user == "AnonymousUser":
+        wished_products = [ wished['product__id'] for wished in Wishlist.objects.filter(owner=request.user).values('product__id') ]
     print (wished_products)
     
     return render(request, 'shop/catalog.template.html',{
@@ -43,8 +47,19 @@ def catalog_taiwan(request):
 # View individual product page
 def productview(request, product_id):
     selected_product = Product.objects.get(pk=product_id)
+    # inwishlist = Wishlist.objects.filter(owner=request.user,product=selected_product)
+    # print(inwishlist)
+    # if not inwishlist:
+    #     print("IN")
+    # else:
+    #     print("pout")
+    wished_products = None
+    if request.user == "AnonymousUser":
+        wished_products = [ wished['product__id'] for wished in Wishlist.objects.filter(owner=request.user).values('product__id') ]
+    print (wished_products)
     return render(request, 'shop/product_view.template.html', {
-        'selected_product': selected_product
+        'selected_product': selected_product,
+        'wished_products': wished_products
     })
 
 def toggleWishlist (request, product_id):

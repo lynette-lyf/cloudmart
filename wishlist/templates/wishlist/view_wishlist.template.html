@@ -87,19 +87,19 @@
     
     <div class='card-title'>
       <!--url remove from wishlist-->
-    <a class='wishlist-btn' style='flex-direction: row; position: absolute; right: 1vw' href="#" data-toggle="tooltip" data-placement="right" title="Remove from wishlist"><i style='color: #311b92;' class="fa fa-heart fa-2x" aria-hidden="true"></i></a>
+    <a class='wishlist-btn' style='flex-direction: row; position: absolute; right: 1vw' href="{% url 'remove_from_wishlist' product_id=wishlist_item.product.id %}" data-toggle="tooltip" data-placement="right" title="Remove from wishlist"><i style='color: #311b92;' class="fa fa-heart fa-2x" aria-hidden="true"></i></a>
     </div>
     
     <div class="card-body">
       <!--url "product_view" #-->
-      <a href="#"><img class='product-img' src="{{ wishlist_item.product.image.url }}" class="card-img-top">
+      <a href="{% url 'productview' wishlist_item.product.id %}"><img class='product-img' src="{{ wishlist_item.product.image.url }}" class="card-img-top">
                 <div class='wrap-product pt-2'>
                     <h5 class="product-name" >{{wishlist_item.product.name}}</h5></a>
                     <p class="product-cost">${{wishlist_item.product.getCostInDollars}}0</p>
                 </div>
       
       <!--url 'add_to_cart' as #-->
-      <a id='btn-cart' class="btn p-3 mt-3" href="#" role="button">ADD TO CART</a>
+      <a id='btn-cart' class="btn p-3 mt-3" href="{% url 'add_to_cart' product_id=wishlist_item.product.id %}" role="button">ADD TO CART</a>
   
            
   </div>
