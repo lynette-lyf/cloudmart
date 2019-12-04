@@ -70,16 +70,16 @@ background: linear-gradient(to right, #311b92,#311b92) no-repeat;
  {% if user.is_authenticated %}
              <a id='btn-cart' class="btn p-3 mt-3" href="{% url 'add_to_cart' product_id=selected_product.id %}" role="button">ADD TO CART</a>
            <br>
-            {% if product.id in wished_products %}
-                <a id='btn-cart' class="btn p-3 mt-3" href="#" role="button">ADD TO WISHLIST</a>
+            {% if selected_product.id in wished_products %}
+                <a id='btn-cart' class="btn p-3 mt-3" href="{% url 'add_to_wishlist' product_id=selected_product.id %}" role="button">ADD TO WISHLIST</a>
             {%else%} 
-                <a id='btn-cart' class="btn p-3 mt-3" href="#" role="button">REMOVE FROM WISHLIST</a>
+                <a id='btn-cart' class="btn p-3 mt-3" href="{% url 'remove_from_wishlist' product_id=selected_product.id %}" role="button">REMOVE FROM WISHLIST</a>
             {%endif%}
 {%endif%}
 {% if not user.is_authenticated %}
              <a id='btn-cart' class="btn p-3 mt-3" href="{% url 'login' %}" role="button">ADD TO CART</a>
             <br>
-             <a id='btn-cart' class="btn p-3 mt-3" href="{% url 'login' %}" role="button">REMOVE FROM WISHLIST</a>
+             <a id='btn-cart' class="btn p-3 mt-3" href="{% url 'login' %}" role="button">ADD TO WISHLIST</a>
 {%endif%}
                 
                 

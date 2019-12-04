@@ -20,11 +20,3 @@ login form layout: https://codepen.io/T-P/pen/bpWqrr
 cart inspired by: https://dribbble.com/shots/5039057-Shopping-cart-V2
 image hover effects: https://codepen.io/nxworld/pen/ZYNOBZ
 
-
-errors: 
-1. Delete wishlist item once it is carted***
-2. reroute login/logout/register _URL = '/' so that alert will show on page
-
-to do:
-1. layout for individual product page*********
-2. create status bar for 1.checkout 2.payment 3.order summary
