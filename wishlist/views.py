@@ -57,3 +57,5 @@ def remove_from_wishlist(request, product_id):
     message = format_html('Product has been <span style="color:#b53737;">removed</span> from your <a style="color: #311b92; text-decoration: underline;" href="{}">wishlist</a>.', reverse('view_wishlist'))
     messages.success(request, message)
     return redirect(reverse('catalog'))
+
+
