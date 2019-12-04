@@ -21,10 +21,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 	 crossorigin="anonymous">
 	</script>
-	
-	
 
-	
 	<link rel="stylesheet" href="{% static 'css/style.css' %}">
 	<title>Cloudmart</title>
 
@@ -52,6 +49,13 @@
 }
 
 </style>
+<script>
+$(document).ready(function(){
+  $(".close").click(function(){
+    $(".notification").hide(1000);
+  });
+});
+</script>
 <body>
       <header>
 
@@ -104,7 +108,7 @@
     {% for m in messages %}
     <div class='notification p-4'>
     {{ m }}
-    <span class='close' ><a style='text-decoration:none; color: #311b92;' href=""><i class="fa fa-times-circle" aria-hidden="true"></i></a></span>
+    <span class='close' style='text-decoration:none; color: #311b92;'><i class="fa fa-times-circle" aria-hidden="true"></i></a></span>
     </div>
     {% endfor %}
   

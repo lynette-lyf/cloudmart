@@ -53,7 +53,7 @@ background: linear-gradient(to right, #311b92,#311b92) no-repeat;
                  <div class='col-lg-7 col-md-12 col-sm-12'>
                       <img class='pt-3' style='max-width:500px;' src="{{selected_product.image.url}}"/> 
                  </div>
-                 <div class='col-lg-5 col-md-12 col-sm-12 pt-3' style='background-color:white; height:50vh;'>
+                 <div class='col-lg-5 col-md-12 col-sm-12' style='background-color:white; height:50vh;'>
                          
                
                 <h4 class='product-title' style='background-color:transparent; color:#311b92; font-size: 2vh;font-weight:bold;text-decoration: none; text-transform:uppercase;' >{{selected_product.name}}</h4>
@@ -65,22 +65,22 @@ background: linear-gradient(to right, #311b92,#311b92) no-repeat;
                 
                 <!--ERROR LIES HERE: ADD/REMOVE TO CART & ADD/REMOVE WISHLIST URL-->
                 
-                
+ 
+            
  {% if user.is_authenticated %}
-             <a id='btn-cart' class="btn p-3 mt-3" href="#" role="button">ADD TO CART</a>
+             <a id='btn-cart' class="btn p-3 mt-3" href="{% url 'add_to_cart' product_id=selected_product.id %}" role="button">ADD TO CART</a>
            <br>
             {% if product.id in wished_products %}
-             <a id='btn-cart' class="btn p-3 mt-3" href="#" role="button">ADD TO WISHLIST</a>
-                {%else%} 
-                 <a id='btn-cart' class="btn p-3 mt-3" href="#" role="button">REMOVE FROM WISHLIST</a>
+                <a id='btn-cart' class="btn p-3 mt-3" href="#" role="button">ADD TO WISHLIST</a>
+            {%else%} 
+                <a id='btn-cart' class="btn p-3 mt-3" href="#" role="button">REMOVE FROM WISHLIST</a>
             {%endif%}
 {%endif%}
-            {% if not user.is_authenticated %}
-             <a id='btn-cart' class="btn p-3 mt-3" href="#" role="button">ADD TO CART</a>
+{% if not user.is_authenticated %}
+             <a id='btn-cart' class="btn p-3 mt-3" href="{% url 'login' %}" role="button">ADD TO CART</a>
             <br>
-             <a id='btn-cart' class="btn p-3 mt-3" href="#" role="button">REMOVE FROM WISHLIST</a>
-            
-            {%endif%}
+             <a id='btn-cart' class="btn p-3 mt-3" href="{% url 'login' %}" role="button">REMOVE FROM WISHLIST</a>
+{%endif%}
                 
                 
                 
