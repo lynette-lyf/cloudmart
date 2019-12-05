@@ -1,0 +1,1 @@
+web: gunicorn CloudMart.wsgi:application
