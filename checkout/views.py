@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.utils import timezone
 from cart.models import CartItem
 from .models import Charge, Transaction, LineItem
+from cart.view import view_cart_amount
 
 import stripe
 

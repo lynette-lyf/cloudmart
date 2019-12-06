@@ -11,6 +11,8 @@ from checkout.models import Transaction, LineItem
 # import in the login_required annotation
 from django.contrib.auth.decorators import login_required
 
+from cart.view import view_cart_amount
+
 # Create your views here.
 def index(request):
     return render(request, 'accounts/index.template.html')
