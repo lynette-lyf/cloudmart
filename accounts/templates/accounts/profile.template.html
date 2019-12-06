@@ -54,7 +54,7 @@
       <div class="row no-gutters d-flex">
             <div class="col-md-2 pt-3">
               <h5 class="card-title"><b>Order #002</b></h5>
-              <a href="#" style='color: #ea3a7e; text-transform: uppercase; font-size: 1.5vh; text-decoration: none;'>View Order ➜</a>
+              <a href="{% url 'view_order' transaction_id=transaction.id %}" style='color: #ea3a7e; text-transform: uppercase; font-size: 1.5vh; text-decoration: none;'>View Order ➜</a>
             </div>
             
             <div class="col-md-8 pt-3">

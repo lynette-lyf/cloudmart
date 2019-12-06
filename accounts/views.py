@@ -89,7 +89,9 @@ def user_profile(request, transaction_id):
     'line_items': line_items
     })
 
-# # view order summary for selected transaction ID in profile page > order summary
-# def view_transaction(request):
-#     transactions = Transaction.objects.filter(owner=request.user)
-#     return redirect('view_transaction')
+# view order summary for selected transaction ID in profile page > order summary
+def view_transaction(request):
+    transactions = Transaction.objects.filter(owner=request.user)
+    return render(request, 'accounts/view_transaction.html', {
+        'transactions': transactions
+    })
