@@ -16,7 +16,7 @@
   <div class="card-header" style='background-color: #1e1753; position: absolute; z-index:2; top:-6.1vh;'>
     <ul class="nav nav-tabs card-header-tabs">
       <li class="nav-item">
-        <a class="nav-link active" href="#">Orders</a>
+        <a class="nav-link active" href="{% url 'user_profile' %}">Orders</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'view_wishlist' %}" style='color: white;'>Wishlist</a>
@@ -32,7 +32,7 @@
    
     <div class="card col-lg-6 col-sm-10 mt-3 mb-3">
       <div class="card-body">
-           <p>Date of Purchase: {{ transaction.date }} </p> 
+           <p>Date of Purchase: {{ transaction.date }} </p> <p>Total cost: ${{ transaction.cost|div:100 }}0 </p>
           
           
           
@@ -46,7 +46,7 @@
          <p>Product Name: {{ l.name }} </p>
            <p>${{ l.cost| div:100 }}0 </p>
             <p>{{ l.transaction_quantity }} </p>
-       <p>Total cost: ${{ transaction.cost|div:100 }}0 </p>
+       
     
       </div>
     </div>
