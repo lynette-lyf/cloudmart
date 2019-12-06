@@ -27,7 +27,7 @@
   
   <div class="card-body d-flex flex-column">
     
-    <!--Order card layout-->
+  
      {% for transactions in all_transactions %}
     <div class="card col-lg-6 col-sm-10 mt-3 mb-3">
       <div class="card-body">
@@ -35,9 +35,9 @@
      <a href="{% url 'view_transaction' transactions.id %}"><p>{{ transactions.id }} </p></a>
      
       <p>{{ transactions.date }} </p>
-       <p>{{ transactions.charge.street_address1 }} </p>
-         <p>{{ transactions.status }} </p>
-           <p>${{ transactions.cost| div:100 }} </p>
+       <p>Billing Address: {{ transactions.charge.street_address1 }}<br>{{ transactions.charge.street_address2 }}</p>
+         <p>Status: {{ transactions.status }} </p>
+           <p>Total cost: ${{ transactions.cost| div:100 }}0 </p>
        
     
       </div>

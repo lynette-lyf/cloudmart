@@ -19,12 +19,12 @@ class Charge(models.Model):
 class Transaction(models.Model):
     
     status_options = [
-        ('pending', "Pending"),
-        ('approved', "Approved"),
-        ('rejected', "Rejected"),
-        ('shipping', "Shipping"),
-        ('delivered', "Delivered"),
-        ('lost', "Lost")
+        ('Pending', "Pending"),
+        ('Approved', "Approved"),
+        ('Rejected', "Rejected"),
+        ('Shipping', "Shipping"),
+        ('Delivered', "Delivered"),
+        ('Lost', "Lost")
     ]
     
     charge = models.ForeignKey('Charge', on_delete=models.CASCADE, null=True)

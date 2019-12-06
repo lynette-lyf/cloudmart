@@ -29,25 +29,24 @@
       
       
       
-      <!--status date cost-->
-      
    
     <div class="card col-lg-6 col-sm-10 mt-3 mb-3">
       <div class="card-body">
-          <p>{{ transation.status }} </p> <p>{{ transaction.date }} </p> <p>${{ transaction.cost|div:100 }}0 </p>
+           <p>Date of Purchase: {{ transaction.date }} </p> 
+          
           
           
           
      
    
      {% for l in line_items %}
-      <p>{{ l.product.name }} </p>
+      
        <img src="{{ l.product.image.url }}"/>
        <p>{{ l.sku }} </p>
-         <p>{{ l.name }} </p>
+         <p>Product Name: {{ l.name }} </p>
            <p>${{ l.cost| div:100 }}0 </p>
             <p>{{ l.transaction_quantity }} </p>
-       
+       <p>Total cost: ${{ transaction.cost|div:100 }}0 </p>
     
       </div>
     </div>

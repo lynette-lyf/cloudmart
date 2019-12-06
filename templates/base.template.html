@@ -101,7 +101,11 @@ $(document).ready(function(){
 
 				<!-- Cart -->
 				<div class="dropdown-nav">
-					<a href="{% url "view_cart" %}" class="cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></i><span class="badge badge-light">{{ cart_amount }}</span></a>
+					<a href="{% url "view_cart" %}" class="cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></i>
+					{% if cart_amount != 0 %}
+					<span class="badge badge-light">{{ cart_amount }}</span>
+					{% endif %}
+					</a>
 				</div>
 {%endif%}
 
