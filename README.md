@@ -1,22 +1,95 @@
-         ___        ______     ____ _                 _  ___  
-        / \ \      / / ___|   / ___| | ___  _   _  __| |/ _ \ 
-       / _ \ \ /\ / /\___ \  | |   | |/ _ \| | | |/ _` | (_) |
-      / ___ \ V  V /  ___) | | |___| | (_) | |_| | (_| |\__, |
-     /_/   \_\_/\_/  |____/   \____|_|\___/ \__,_|\__,_|  /_/ 
- ----------------------------------------------------------------- 
+# E-Commerce Platform - Cloudmart
+## Stream Four Project: Full Stack Frameworks with Django Milestone Project - Code Institute
+
+brief intro of website
+
+## Demo
+<a href="https://gph.is/g/4Vxj2K6"><img src="https://media.giphy.com/media/j1np2G2cVxuIVFbQMX/giphy.gif"/></a>
+  
+A live demo can be found [here](https://lyf-cloudmart.herokuapp.com/).
+
+## UX
+
+describe layout and theme
+
+insert user stories
+
+## Technologies
+### Styling
+1.	HTML
+2.	CSS
+3.       Javascript
+4.       jQuery
+3.	Bootstrap (4.3.1)
+4.       Crispy Forms
+8.	Font Awesome (4.7.0)
+9.	Google Fonts API
+
+### Framework
+1.       Django 2
+4.	Python (3.6)
+5.	Jinja2 (2.10.3)
+6.	Flask (1.1.1)
+
+### Additional plug-ins
+1.
+2.
+
+### Database
+1. dbsqlite3
+2. AWS S3
 
 
-Hi there! Welcome to AWS Cloud9!
+## Features
+brief description of features for each app
 
-To get started, create some files, play with the terminal,
-or visit https://docs.aws.amazon.com/console/cloud9/ for our documentation.
+### Features Left to Implement
+- feature1
+- feature2
 
-Happy coding!
-# cloudmart
+## Testing
+#### 1. App 1:
+**•	Feature 1
 
-!!credits!!
-parallax effect on mouse move: https://codepen.io/GreenSock/pen/OeqgrZ
-login form layout: https://codepen.io/T-P/pen/bpWqrr
-cart inspired by: https://dribbble.com/shots/5039057-Shopping-cart-V2
-image hover effects: https://codepen.io/nxworld/pen/ZYNOBZ
+description of feature and its functionality
+
+**•	Feature 2
+
+description of feature and its functionality
+
+#### 2. App 2:
+**•	Feature 1
+
+description of feature and its functionality
+
+**•	Feature 2
+
+description of feature and its functionality
+
+
+
+
+To ensure compatibility and responsiveness, the site was tested across multiple browsers such as Chrome, Firefox, Safari and Internet Explorer and on multiple android devices - Galaxy S5, Pixel 2, Pixel 2 XL and iOS devices - iPhone 5-X, iPad and iPad Pro. 
+
+address compatilibty issues here
+
+## Deployment
+This site is hosted using Heroku, deployed directly from the master branch and Github. The deployed site will update automatically upon new commits to the master branch.
+
+To run locally, you can clone this repository directly into the editor of your choice by pasting `heroku git:clone -a lyf-cloudmart` into your terminal.
+
+## Credits
+### Media  
+I do not own any of the content shown in this website. Gifs, background images and the product images and their description were taken from various websites. This e-commerce platform is entirely fictional and resemblances in its name to actual companies, are entirely coincidental and thereafter do not aim to replicate them in any way.
+
+### Acknowledgements
+
+Responsive navbar tutorial by Youtuber [Dev Ed](https://www.youtube.com/watch?v=gXkqy0b4M5g&t=127s)
+Parallax effect on cursor credits to CodePen user [GreenSock](https://codepen.io/GreenSock/pen/OeqgrZ)
+Gradient background tutorial by Youtuber[DarkCode](https://www.youtube.com/watch?v=NnrBempao2M&t=169s)
+Account form layout credits to CodePen user [Tirth Patel](https://codepen.io/T-P/pen/bpWqrr)
+Shop cart layout inspired by Dribble user [Olia Gozha's design](https://dribbble.com/shots/5039057-Shopping-cart-V2)
+Image hover effects credits to CodePen user [Naoya](https://codepen.io/nxworld/pen/ZYNOBZ) 
+
+**This is for educational use.**
 
