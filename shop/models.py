@@ -16,7 +16,8 @@ class Product(models.Model):
     
     # Display <Product Name>:<Product ID>
     def __str__(self):
-        return self.name + " : " + self.sku
+        return self.sku + " | " + self.name + " : " +  "Available Stock: "
+        # + self.quantity
     
     def getCostInDollars(self):
         return self.cost/100

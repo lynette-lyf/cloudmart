@@ -31,9 +31,9 @@ def charge(request):
         # create a new transaction
         transaction = Transaction()
         transaction.owner = request.user
-        transaction.cart_items = CartItem.objects.filter(owner=request.user)
         transaction.status = "pending"
         transaction.date = timezone.now()
+        transaction.cost = amount
         transaction.save()
         
         all_cart_items = CartItem.objects.filter(owner=request.user)
@@ -43,7 +43,8 @@ def charge(request):
             lineItem.product = cart_item.product
             lineItem.name = cart_item.product.name
             lineItem.sku = cart_item.product.sku
-            lineItem.cost = cart_item.product.cost
+            lineItem.cost = cart_item.product.cost * cart_item.quantity
+            lineItem.transaction_quantity = cart_item.quantity
             lineItem.save()
         
         order_form = OrderForm()
@@ -95,7 +96,7 @@ def charge(request):
                     # update the stock
                     line_items = LineItem.objects.filter(transaction_id=transaction_id)
                     for each_line_item in line_items:
-                        each_line_item.product.quantity -= 1
+                        each_line_item.product.quantity -= each_line_item.transaction_quantity
                         each_line_item.product.save()
                     
                     # remove cart items
@@ -115,3 +116,15 @@ def charge(request):
             'amount': amount,
             'publishable': settings.STRIPE_PUBLISHABLE_KEY
         })
+    
+
+# View order summary on thank you page
+def order_summary(request, transaction_id):
+    transaction = Transaction.objects.get(id=transaction_id)
+    line_items = LineItem.objects.filter(transaction=transaction)
+    return render(request, 'checkout/thankyou.template.html', {
+        'transaction': transaction,
+        'line_items': line_items
+    })
+
+

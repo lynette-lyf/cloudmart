@@ -98,6 +98,7 @@ nav {
   list-style: none;
   min-height: 8vh;
   padding: 10px;
+  position: absolute;
 }
 
 .cart:hover, .cart:focus {
@@ -146,7 +147,14 @@ nav {
   .dropdown-nav {
     left: 75vw;
   }
+  
+  .cart {
+    top: 3.8vh;
+    left: 78vw;
+  }
 }
+
+
 
 /* MOBILE VIEW (IPAD PRO AND SMALLER DEVICES) */
 @media screen and (max-width: 1024px) {
@@ -180,6 +188,7 @@ nav {
     background-color: #ea3a7e;
     border-radius:30px;
   }
+  
 
   .nav-links li {
     opacity: 0;

@@ -6,6 +6,8 @@ from django.contrib.auth import logout
 from django.conf import settings
 from django.shortcuts import redirect
 
+from checkout.models import Transaction, LineItem
+
 # import in the login_required annotation
 from django.contrib.auth.decorators import login_required
 
@@ -75,3 +77,19 @@ def register(request):
         return render(request, "accounts/register.template.html", {
             'form': register_form
     })
+
+
+
+# view all transactions and order summary in profile page
+def user_profile(request, transaction_id):
+    all_transactions = Transaction.objects.get(id=transaction_id)
+    line_items = LineItem.objects.filter(all_transactions=all_transactions)
+    return render(request, 'accounts/profile.template.html', {
+    'all_transactions': all_transactions,
+    'line_items': line_items
+    })
+
+# # view order summary for selected transaction ID in profile page > order summary
+# def view_transaction(request):
+#     transactions = Transaction.objects.filter(owner=request.user)
+#     return redirect('view_transaction')

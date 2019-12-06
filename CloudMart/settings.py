@@ -26,7 +26,7 @@ SECRET_KEY = 'idq_2k$ck51*__w55ltxr&5u#jf0i=nrtg%4cjmaf4@933i4g&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["lyf-cloudmart.herokuapp.com"]
+ALLOWED_HOSTS = ["lyf-cloudmart.herokuapp.com", "8b1f6c0c0f134da3865ef0a04dcc537e.vfs.cloud9.us-east-1.amazonaws.com"]
 
 
 # Application definition

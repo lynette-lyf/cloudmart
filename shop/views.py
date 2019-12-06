@@ -11,11 +11,8 @@ def catalog(request):
     products = Product.objects.all()
     # Pass in wishlist products to the catalog (list comprehension)
     print(request.user)
-    
-    # when Line15 & 16 ADDED, con: remove_wishlist btn cannot be called; pro: everything else works
-    # if Line 15 & 16 REMOVED, con: AnonymousUser catalog page cannot be viewed; pro: AuthUser catalog page can be viewed, wishlist btn works
     wished_products = None
-    if request.user == "AnonymousUser":
+    if request.user.is_authenticated:
         wished_products = [ wished['product__id'] for wished in Wishlist.objects.filter(owner=request.user).values('product__id') ]
     print (wished_products)
     
@@ -50,14 +47,8 @@ def catalog_taiwan(request):
 # View individual product page
 def productview(request, product_id):
     selected_product = Product.objects.get(pk=product_id)
-    # inwishlist = Wishlist.objects.filter(owner=request.user,product=selected_product)
-    # print(inwishlist)
-    # if not inwishlist:
-    #     print("IN")
-    # else:
-    #     print("pout")
     wished_products = None
-    if request.user == "AnonymousUser":
+    if request.user.is_authenticated:
         wished_products = [ wished['product__id'] for wished in Wishlist.objects.filter(owner=request.user).values('product__id') ]
     print (wished_products)
     return render(request, 'shop/product_view.template.html', {
