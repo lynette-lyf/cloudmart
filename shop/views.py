@@ -19,7 +19,9 @@ def catalog(request):
     if request.user.is_authenticated:
         wished_products = [ wished['product__id'] for wished in Wishlist.objects.filter(owner=request.user).values('product__id') ]
     print (wished_products)
-    cart_amount = CartItem.objects.filter(owner=request.user).count()
+    cart_amount = None
+    if request.user.is_authenticated:
+        cart_amount = CartItem.objects.filter(owner=request.user).count()
     return render(request, 'shop/catalog.template.html',{
         'products': products,
         'wished_products': wished_products,
@@ -30,7 +32,9 @@ def catalog(request):
 def catalog_japan(request):
     origin_search = Origin.objects.get(name='Japan')
     products = Product.objects.filter(origin=origin_search)
-    cart_amount = CartItem.objects.filter(owner=request.user).count()
+    cart_amount = None
+    if request.user.is_authenticated:
+        cart_amount = CartItem.objects.filter(owner=request.user).count()
     return render(request, 'shop/catalog.template.html',{
         'products': products,
         'cart_amount': cart_amount
@@ -39,7 +43,9 @@ def catalog_japan(request):
 def catalog_korea(request):
     origin_search = Origin.objects.get(name='Korea')
     products = Product.objects.filter(origin=origin_search)
-    cart_amount = CartItem.objects.filter(owner=request.user).count()
+    cart_amount = None
+    if request.user.is_authenticated:
+        cart_amount = CartItem.objects.filter(owner=request.user).count()
     return render(request, 'shop/catalog.template.html',{
         'products': products,
         'cart_amount': cart_amount
@@ -48,7 +54,9 @@ def catalog_korea(request):
 def catalog_taiwan(request):
     origin_search = Origin.objects.get(name='Taiwan')
     products = Product.objects.filter(origin=origin_search)
-    cart_amount = CartItem.objects.filter(owner=request.user).count()
+    cart_amount = None
+    if request.user.is_authenticated:
+        cart_amount = CartItem.objects.filter(owner=request.user).count()
     return render(request, 'shop/catalog.template.html',{
         'products': products,
         'cart_amount': cart_amount
@@ -58,10 +66,10 @@ def catalog_taiwan(request):
 def productview(request, product_id):
     selected_product = Product.objects.get(pk=product_id)
     wished_products = None
+    cart_amount = None
     if request.user.is_authenticated:
         wished_products = [ wished['product__id'] for wished in Wishlist.objects.filter(owner=request.user).values('product__id') ]
-    print (wished_products)
-    cart_amount = CartItem.objects.filter(owner=request.user).count()
+        cart_amount = CartItem.objects.filter(owner=request.user).count()
     return render(request, 'shop/product_view.template.html', {
         'selected_product': selected_product,
         'wished_products': wished_products,
@@ -71,7 +79,9 @@ def productview(request, product_id):
 def toggleWishlist (request, product_id):
     wished_items = Wishlist.objects.filter(owner=request.user)
     all_products = Product.objects.all()
-    cart_amount = CartItem.objects.filter(owner=request.user).count()
+    cart_amount = None
+    if request.user.is_authenticated:
+        cart_amount = CartItem.objects.filter(owner=request.user).count()
     return render(request, 'shop/catalog.template.html', {
         'wished_items': wished_items,
         'all_products': all_products,

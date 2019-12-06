@@ -18,7 +18,9 @@ from cart.models import CartItem
 
 # Create your views here.
 def index(request):
-    cart_amount= CartItem.objects.filter(owner=request.user).count()
+    cart_amount = None
+    if request.user.is_authenticated:
+        cart_amount = CartItem.objects.filter(owner=request.user).count()
     return render(request, 'accounts/index.template.html', {
         'cart_amount': cart_amount
     })
@@ -59,7 +61,9 @@ def profile(request):
     user = User.objects.get(email=request.user.email)
     all_transactions = list(Transaction.objects.filter(owner=user))
     all_transactions.reverse()
-    cart_amount = CartItem.objects.filter(owner=request.user).count()
+    cart_amount = None
+    if request.user.is_authenticated:
+        cart_amount = CartItem.objects.filter(owner=request.user).count()
     # line_items = LineItem.objects.filter(all_transactions=all_transactions)
     return render(request, 'accounts/profile.template.html', {
     'all_transactions': all_transactions,
@@ -101,7 +105,9 @@ def register(request):
 def view_transaction(request, transaction_id):
     transaction = Transaction.objects.get(id=transaction_id)
     line_items = LineItem.objects.filter(transaction=transaction)
-    cart_amount = CartItem.objects.filter(owner=request.user).count()
+    cart_amount = None
+    if request.user.is_authenticated:
+        cart_amount = CartItem.objects.filter(owner=request.user).count()
     return render(request, 'accounts/view_transaction.template.html', {
     'transaction': transaction,
     'line_items': line_items,

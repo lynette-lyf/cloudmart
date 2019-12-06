@@ -20,7 +20,9 @@ def calculate_cart_cost(request):
 # Create your views here.
 def checkout(request):
     amount = calculate_cart_cost(request)
-    cart_amount= CartItem.objects.filter(owner=request.user).count()
+    cart_amount = None
+    if request.user.is_authenticated:
+        cart_amount= CartItem.objects.filter(owner=request.user).count()
     return render(request, 'checkout/charge.template.html', {
         'amount': amount/100,
         'cart_amount': cart_amount
@@ -29,6 +31,11 @@ def checkout(request):
 def charge(request):
     amount = calculate_cart_cost(request)
     
+    
+    cart_amount = None
+    if request.user.is_authenticated:
+        cart_amount= CartItem.objects.filter(owner=request.user).count()
+        
     if request.method == 'GET':
         
         # create a new transaction
@@ -57,7 +64,8 @@ def charge(request):
                 'payment_form': payment_form,
                 'amount': amount,
                 'transaction': transaction,
-                'publishable': settings.STRIPE_PUBLISHABLE_KEY
+                'publishable': settings.STRIPE_PUBLISHABLE_KEY,
+                'cart_amount': cart_amount
             })
     else:
         
@@ -117,7 +125,8 @@ def charge(request):
             'order_form' : order_form,
             'payment_form': payment_form,
             'amount': amount,
-            'publishable': settings.STRIPE_PUBLISHABLE_KEY
+            'publishable': settings.STRIPE_PUBLISHABLE_KEY,
+            'cart_amount': cart_amount
         })
     
 
@@ -125,9 +134,13 @@ def charge(request):
 def order_summary(request, transaction_id):
     transaction = Transaction.objects.get(id=transaction_id)
     line_items = LineItem.objects.filter(transaction=transaction)
+    cart_amount = None
+    if request.user.is_authenticated:
+        cart_amount= CartItem.objects.filter(owner=request.user).count()
     return render(request, 'checkout/thankyou.template.html', {
         'transaction': transaction,
-        'line_items': line_items
+        'line_items': line_items,
+        'cart_amount': cart_amount
     })
 
 

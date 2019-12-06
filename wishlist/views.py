@@ -22,7 +22,9 @@ def view_wishlist(request):
     all_wishlist_items = Wishlist.objects.filter(owner=request.user)
     # total_cost = calculate total cost in wishlist
     total_cost = calculate_wishlist_cost(request)
-    cart_amount = CartItem.objects.filter(owner=request.user).count()
+    cart_amount = None
+    if request.user.is_authenticated:
+        cart_amount = CartItem.objects.filter(owner=request.user).count()
     return render(request, 'wishlist/view_wishlist.template.html', {
         'all_wishlist_items': all_wishlist_items,
         'total_cost':total_cost,
