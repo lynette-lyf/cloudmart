@@ -91,6 +91,9 @@ $(document).ready(function(){
 						<a href="{% url "user_profile" %}">Account</a>
 					</li>
 					<li>
+						<a href="{% url "view_wishlist" %}">Wishlist</a>
+					</li>
+					<li>
 						<a href="{% url "logout" %}">Logout</a>
 					</li>
 					
@@ -98,7 +101,7 @@ $(document).ready(function(){
 
 				<!-- Cart -->
 				<div class="dropdown-nav">
-					<a href="{% url "view_cart" %}" class="cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>{{ cart_amount }}</a>
+					<a href="{% url "view_cart" %}" class="cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></i><span class="badge badge-light">{{ cart_amount }}</span></a>
 				</div>
 {%endif%}
 
