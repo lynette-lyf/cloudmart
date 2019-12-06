@@ -83,17 +83,13 @@ To run locally, you can clone this repository directly into the editor of your c
 I do not own any of the content shown in this website. Gifs, background images and the product images and their description were taken from various websites. This e-commerce platform is entirely fictional and resemblances in its name to actual companies, are entirely coincidental and thereafter do not aim to replicate them in any way.
 
 ### Acknowledgements
-acknowledgement1 [label](link)
 
+Responsive navbar tutorial by Youtuber [Dev Ed](https://www.youtube.com/watch?v=gXkqy0b4M5g&t=127s)
+Parallax effect on cursor credits to CodePen user [GreenSock](https://codepen.io/GreenSock/pen/OeqgrZ)
+Gradient background tutorial by Youtuber[DarkCode](https://www.youtube.com/watch?v=NnrBempao2M&t=169s)
+Account form layout credits to CodePen user [Tirth Patel](https://codepen.io/T-P/pen/bpWqrr)
+Shop cart layout inspired by Dribble user [Olia Gozha's design](https://dribbble.com/shots/5039057-Shopping-cart-V2)
+Image hover effects credits to CodePen user [Naoya](https://codepen.io/nxworld/pen/ZYNOBZ) 
 
 **This is for educational use.**
-
-
-# cloudmart
-
-!!credits!!
-parallax effect on mouse move: https://codepen.io/GreenSock/pen/OeqgrZ
-login form layout: https://codepen.io/T-P/pen/bpWqrr
-cart inspired by: https://dribbble.com/shots/5039057-Shopping-cart-V2
-image hover effects: https://codepen.io/nxworld/pen/ZYNOBZ
 
