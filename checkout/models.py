@@ -14,6 +14,7 @@ class Charge(models.Model):
 
     def __str__(self):
         return "{0}-{1}-{2}".format(self.id, self.date, self.full_name)
+        
 
 class Transaction(models.Model):
     

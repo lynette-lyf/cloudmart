@@ -3,6 +3,8 @@ from .models import Product, Origin
 from wishlist.models import Wishlist
 from django.contrib import messages
 # from cart.views import calculate_cart_cost
+from cart.view import view_cart_amount
+
 
 # Create your views here.
 

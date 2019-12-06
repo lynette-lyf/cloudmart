@@ -335,7 +335,7 @@ nav {
   left: 0;
   height: 100%;
   width: 100%;
-  z-index:1000;#e83e8c
+  z-index:1000;
 }
 
 /* Properties for each moving object */
@@ -347,6 +347,8 @@ nav {
   background-color: transparent;
   z-index:1000;
 }
+
+
 
 /* Position for each moving object in Desktop */
 @media screen and (min-width: 1025px) {

@@ -49,6 +49,13 @@ def login(request):
 def profile(request):
     User = get_user_model()
     user = User.objects.get(email=request.user.email)
+    all_transactions = list(Transaction.objects.filter(owner=user))
+    all_transactions.reverse()
+    # line_items = LineItem.objects.filter(all_transactions=all_transactions)
+    return render(request, 'accounts/profile.template.html', {
+    'all_transactions': all_transactions,
+    # 'line_items': line_items
+    })
     return render(request, 'accounts/profile.template.html', {
         'user' : user
     })
@@ -81,17 +88,10 @@ def register(request):
 
 
 # view all transactions and order summary in profile page
-def user_profile(request, transaction_id):
-    all_transactions = Transaction.objects.get(id=transaction_id)
-    line_items = LineItem.objects.filter(all_transactions=all_transactions)
-    return render(request, 'accounts/profile.template.html', {
-    'all_transactions': all_transactions,
+def view_transaction(request, transaction_id):
+    transaction = Transaction.objects.get(id=transaction_id)
+    line_items = LineItem.objects.filter(transaction=transaction)
+    return render(request, 'accounts/view_transaction.template.html', {
+    'transaction': transaction,
     'line_items': line_items
-    })
-
-# view order summary for selected transaction ID in profile page > order summary
-def view_transaction(request):
-    transactions = Transaction.objects.filter(owner=request.user)
-    return render(request, 'accounts/view_transaction.html', {
-        'transactions': transactions
     })

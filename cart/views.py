@@ -23,10 +23,11 @@ def view_cart(request):
     all_cart_items = CartItem.objects.filter(owner=request.user)
     # total_cost = calculate total cost in cart
     total_cost = calculate_cart_cost(request)
-    
+    cart_amount = view_cart_amount(request)
     return render(request, 'cart/view_cart.template.html', {
         'all_cart_items': all_cart_items,
-        'total_cost': total_cost/100
+        'total_cost': total_cost/100,
+        'cart_amount': cart_amount
     })
 
     
@@ -81,3 +82,9 @@ def carted_wishlist_item(request, product_id):
     existing_wishlist_item = Wishlist.objects.filter(owner=request.user, product=product).first()
     if existing_wishlist_item != None:
         existing_wishlist_item.delete()
+
+
+def view_cart_amount(request):
+    cart_amount= CartItem.objects.filter(owner=request.user).count()
+    return cart_amount
+    

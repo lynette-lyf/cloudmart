@@ -1,5 +1,7 @@
 {% extends 'base.template.html' %}
+{% load mathfilters %}
 {%block content%}
+
 
 <header style='height: 30vh!important; z-index:1'>
     <div class='user-details' style='position: relative; left: 11vw; padding-top: 6vh;'>
@@ -26,27 +28,21 @@
   <div class="card-body d-flex flex-column">
     
     <!--Order card layout-->
-   
+     {% for transactions in all_transactions %}
     <div class="card col-lg-6 col-sm-10 mt-3 mb-3">
       <div class="card-body">
-          
-      <div class="row no-gutters d-flex">
-            <div class="col-md-2 pt-3">
-              <h5 class="card-title"><b>Order #003</b></h5>
-              <a href="#" style='color: #ea3a7e; text-transform: uppercase; font-size: 1.5vh; text-decoration: none;'>View Order ➜</a>
-            </div>
-            
-            <div class="col-md-8 pt-3">
-              <p class="card-text"><i class="fa fa-circle-o" style='color: grey;' aria-hidden="true">&nbsp;</i>      Pending on 28 Sep, 2019</p>
-            </div>
-            
-             <div class="col-md-2">
-              <img style='max-width:100px;' src='https://cf.shopee.sg/file/d4c24b2ab9200144e39c144aa307172e'/>
-            </div>
-      </div>
+          <p>{{ forloop.counter }} </p>
+     <a href="{% url 'view_transaction' transactions.id %}"><p>{{ transactions.id }} </p></a>
+     
+      <p>{{ transactions.date }} </p>
+       <p>{{ transactions.charge.street_address1 }} </p>
+         <p>{{ transactions.status }} </p>
+           <p>${{ transactions.cost| div:100 }} </p>
+       
+    
       </div>
     </div>
-    
+      {% endfor %}
     
       <div class="card col-lg-6 col-sm-10 mt-3 mb-3">
       <div class="card-body">
@@ -54,7 +50,7 @@
       <div class="row no-gutters d-flex">
             <div class="col-md-2 pt-3">
               <h5 class="card-title"><b>Order #002</b></h5>
-              <a href="{% url 'view_order' transaction_id=transaction.id %}" style='color: #ea3a7e; text-transform: uppercase; font-size: 1.5vh; text-decoration: none;'>View Order ➜</a>
+              <a href="#" style='color: #ea3a7e; text-transform: uppercase; font-size: 1.5vh; text-decoration: none;'>View Order ➜</a>
             </div>
             
             <div class="col-md-8 pt-3">
