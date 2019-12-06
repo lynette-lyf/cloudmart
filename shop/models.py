@@ -1,7 +1,5 @@
 from django.db import models
 
-#NOTE TO SELF: make migrations everytime model is changed
-
 # Create your models here.
 
 class Product(models.Model):

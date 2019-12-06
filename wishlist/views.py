@@ -3,6 +3,8 @@ from .models import Wishlist
 from shop.models import Product
 from django.contrib import messages
 from django.utils.html import format_html
+from cart.views import view_cart_amount
+from cart.models import CartItem
 
 # Create your views here.
 
@@ -20,10 +22,11 @@ def view_wishlist(request):
     all_wishlist_items = Wishlist.objects.filter(owner=request.user)
     # total_cost = calculate total cost in wishlist
     total_cost = calculate_wishlist_cost(request)
-    
+    cart_amount = CartItem.objects.filter(owner=request.user).count()
     return render(request, 'wishlist/view_wishlist.template.html', {
         'all_wishlist_items': all_wishlist_items,
-        'total_cost':total_cost
+        'total_cost':total_cost,
+        'cart_amount': cart_amount
     })
     
 

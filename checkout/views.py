@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.utils import timezone
 from cart.models import CartItem
 from .models import Charge, Transaction, LineItem
-from cart.view import view_cart_amount
+from cart.views import view_cart_amount
 
 import stripe
 
@@ -20,8 +20,10 @@ def calculate_cart_cost(request):
 # Create your views here.
 def checkout(request):
     amount = calculate_cart_cost(request)
+    cart_amount= CartItem.objects.filter(owner=request.user).count()
     return render(request, 'checkout/charge.template.html', {
-        'amount': amount/100
+        'amount': amount/100,
+        'cart_amount': cart_amount
     })
 
 def charge(request):

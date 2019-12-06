@@ -1,13 +1,18 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse
 from django.contrib import auth, messages
 from .forms import UserLoginForm, UserRegistrationForm, get_user_model
+from cart.views import view_cart_amount
+from cart.models import CartItem
 
 # import in the login_required annotation
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
-    return render(request, 'accounts/index.template.html')
+    cart_amount = CartItem.objects.filter(owner=request.user).count()
+    return render(request, 'accounts/index.template.html', {
+        'cart_amount': cart_amount
+    })
 
 # Logout function
 def logout(request):
@@ -51,8 +56,10 @@ def login(request):
 def profile(request):
     User = get_user_model()
     user = User.objects.get(email=request.user.email)
+    cart_amount = CartItem.objects.filter(owner=request.user).count()
     return render(request, 'accounts/profile.template.html', {
-        'user' : user
+        'user' : user,
+        'cart_amount': cart_amount
     })
     
 def register(request):

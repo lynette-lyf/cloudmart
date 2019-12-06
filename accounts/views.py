@@ -11,11 +11,17 @@ from checkout.models import Transaction, LineItem
 # import in the login_required annotation
 from django.contrib.auth.decorators import login_required
 
-from cart.view import view_cart_amount
+from cart.views import view_cart_amount
+from cart.models import CartItem
+
+
 
 # Create your views here.
 def index(request):
-    return render(request, 'accounts/index.template.html')
+    cart_amount= CartItem.objects.filter(owner=request.user).count()
+    return render(request, 'accounts/index.template.html', {
+        'cart_amount': cart_amount
+    })
 
 # Logout function
 def logout(request):
@@ -53,9 +59,11 @@ def profile(request):
     user = User.objects.get(email=request.user.email)
     all_transactions = list(Transaction.objects.filter(owner=user))
     all_transactions.reverse()
+    cart_amount = CartItem.objects.filter(owner=request.user).count()
     # line_items = LineItem.objects.filter(all_transactions=all_transactions)
     return render(request, 'accounts/profile.template.html', {
     'all_transactions': all_transactions,
+    'cart_amount': cart_amount
     # 'line_items': line_items
     })
     return render(request, 'accounts/profile.template.html', {
@@ -93,7 +101,10 @@ def register(request):
 def view_transaction(request, transaction_id):
     transaction = Transaction.objects.get(id=transaction_id)
     line_items = LineItem.objects.filter(transaction=transaction)
+    cart_amount = CartItem.objects.filter(owner=request.user).count()
     return render(request, 'accounts/view_transaction.template.html', {
     'transaction': transaction,
-    'line_items': line_items
+    'line_items': line_items,
+    'cart_amount': cart_amount
     })
+
