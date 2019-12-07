@@ -4,7 +4,6 @@
 This e-commerce platform is a food retailer that aims to specialize in selling popular snacks from all over the world. These snacks are usually unavailable in many places except its country of origin, difficult to import or even have a short shelf-life. Hence, there is an increasing demand for these products. Currently, the shop only has products from Japan, Korea and Taiwan.
 
 ## Demo
-<a href="https://gph.is/g/4Vxj2K6"><img src="https://media.giphy.com/media/j1np2G2cVxuIVFbQMX/giphy.gif"/></a>
   
 A live demo can be found [here](https://lyf-cloudmart.herokuapp.com/).
 
