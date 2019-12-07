@@ -2,6 +2,10 @@
 {% load mathfilters %}
 {%block content%}
 
+<style>
+    
+</style>
+
 
 <header style='height: 30vh!important; z-index:1'>
     <div class='user-details' style='position: relative; left: 11vw; padding-top: 6vh;'>
@@ -11,12 +15,12 @@
 </div>
 </header>
 
-<div class="container-fluid" style="margin-left: 20vw;">
+<div class="container-fluid">
 <div class="card text-center" style='border: none;'>
   <div class="card-header" style='background-color: #1e1753; position: absolute; z-index:2; top:-6.1vh;'>
     <ul class="nav nav-tabs card-header-tabs">
-      <li class="nav-item">
-        <a class="nav-link active" href="#">Orders</a>
+      <li class="nav-item" style="margin-left: 21vw;">
+        <a class="nav-link active" href="{% url 'user_profile' %}">Orders</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'view_wishlist' %}" style='color: white;'>Wishlist</a>
@@ -24,72 +28,38 @@
     </ul>
   </div>
   
-  
-  <div class="card-body d-flex flex-column">
-    
-  
-     {% for transactions in all_transactions %}
-    <div class="card col-lg-6 col-sm-10 mt-3 mb-3">
-      <div class="card-body">
-          <p>{{ forloop.counter }} </p>
-     <a href="{% url 'view_transaction' transactions.id %}"><p>{{ transactions.id }} </p></a>
+
+  <div class="card-body d-flex flex-column"  style="margin-left: 21vw;">
      
-      <p>{{ transactions.date }} </p>
-       <p>Billing Address: {{ transactions.charge.street_address1 }}<br>{{ transactions.charge.street_address2 }}</p>
-         <p>Status: {{ transactions.status }} </p>
-           <p>Total cost: ${{ transactions.cost| div:100 }}0 </p>
-       
-    
-      </div>
-    </div>
-      {% endfor %}
-    
-      <div class="card col-lg-6 col-sm-10 mt-3 mb-3">
+     {% for transactions in all_transactions %}
+      <div class="card col-lg-7 col-md-12 col-sm-12 mt-3 mb-3 p-3">
       <div class="card-body">
           
       <div class="row no-gutters d-flex">
-            <div class="col-md-2 pt-3">
-              <h5 class="card-title"><b>Order #002</b></h5>
-              <a href="#" style='color: #ea3a7e; text-transform: uppercase; font-size: 1.5vh; text-decoration: none;'>View Order ➜</a>
+            <div class="col-md-2 pt-2">
+              <h5 class="card-title"><b>Order #{{ transactions.id }}</b></h5>
+              <a href="{% url 'view_transaction' transactions.id %}" style='color: #ea3a7e; text-transform: uppercase; font-size: 1.5vh; text-decoration: none;'>View Order ➜</a>
             </div>
             
-            <div class="col-md-8 pt-3">
-              <p class="card-text"><i class="fa fa-circle" style='color: #ff781f;' aria-hidden="true">&nbsp;</i>      Shipped on 28 Sep, 2019</p>
+            <div class="col-md-8 pt-4">
+              <p class="card-text" style='text-transform: capitalize;'><i class="fa fa-circle" style='color: #ea3a7e;' aria-hidden="true">&nbsp;</i>      {{ transactions.status }}</p>
             </div>
             
-             <div class="col-md-2">
-              <img style='max-width:100px;' src='https://gd.image-gmkt.com/SAMYANG-FIRE-NOODLE-CHALLENGE-SAUCE-SAMYANG-ORIGINAL-HOT-SPICY-CHICKEN/li/720/662/1296662720.g_400-w_g.jpg'/>
+            <div class="col-md-2 pt-2">
+              <p class="card-text" style='text-transform: uppercase; font-size: 1.3vh;'>Transaction of <br>
+              <span class="card-cost" style="font-weight: bold; color: #ea3a7e; font-size: 2vh;">${{ transactions.cost| div:100 }}0</span><Br>
+              <span class="date" style='text-transform: uppercase; font-size: 1.3vh;'>Made on {{ transactions.date }}</span></p>
             </div>
       </div>
       </div>
-    </div>
-            
-            
-        <div class="card col-lg-6 col-sm-10 mt-3 mb-3" style='border-color: #4c9a2a;'>
-      <div class="card-body">
-          
-      <div class="row no-gutters">
-            <div class="col-md-2 pt-3">
-              <h5 class="card-title" style='color: grey'><b>Order #001</b></h5>
-              <a href="#" style='color: #ea3a7e; text-transform: uppercase; font-size: 1.5vh; text-decoration: none;'>View Order ➜</a>
-            </div>
-            
-            <div class="col-md-8 pt-3">
-              <p class="card-text" style='color:grey'><i class="fa fa-check-circle" style='color: #4c9a2a;' aria-hidden="true">&nbsp;</i>      Order Completed on 19 Aug, 2019</p>
-            </div>
-            
-             <div class="col-md-2">
-              <img style='max-width:100px;' src='https://cf.shopee.sg/file/d4c24b2ab9200144e39c144aa307172e'/>
-            </div>
-      
-    </div>
-
-    
+      </div>
+   
+{% endfor %}
+     </div>
   </div>
-  
-  
-  
 </div>
 </div>
+  
+ 
 
 {% endblock %}

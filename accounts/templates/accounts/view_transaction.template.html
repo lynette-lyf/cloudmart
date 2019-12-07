@@ -2,6 +2,31 @@
 {% load mathfilters %}
 {%block content%}
 
+<style>
+.body-header, .cost-total {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 13px;
+  letter-spacing:2px;
+  color: grey;
+} 
+
+.body-content {
+  font-weight: bold;
+  font-size: 13px;
+  letter-spacing:2px;
+  color: #311b92;
+}
+
+.cost-total-border {
+  border-top: 4px solid #311b92;
+}
+
+.cost-total {
+  font-size: 13px;
+}
+</style>
+
 
 <header style='height: 30vh!important; z-index:1'>
     <div class='user-details' style='position: relative; left: 11vw; padding-top: 6vh;'>
@@ -11,11 +36,11 @@
 </div>
 </header>
 
-<div class="container-fluid" style="margin-left: 20vw;">
+<div class="container-fluid">
 <div class="card text-center" style='border: none;'>
   <div class="card-header" style='background-color: #1e1753; position: absolute; z-index:2; top:-6.1vh;'>
     <ul class="nav nav-tabs card-header-tabs">
-      <li class="nav-item">
+      <li class="nav-item" style="margin-left: 21vw;">
         <a class="nav-link active" href="{% url 'user_profile' %}">Orders</a>
       </li>
       <li class="nav-item">
@@ -25,74 +50,71 @@
   </div>
   
   
-  <div class="card-body d-flex flex-column">
+<div class="table-responsive col-lg-7 col-md-10 col-sm-12 pt-5" style="margin-left: 21vw;">
+    <table class="table table-borderless">
+      <thead style='color: white; background-color: #1e1753'>
+        <tr>
+          <th><a href="{% url 'user_profile' %}" style='color: white; text-transform: uppercase; font-size: 1.6vh; text-decoration: none; text-align:left;'>← Back</a></th>
+          <th style='text-align: center;'><h5><b>Order #{{ transaction.id }} Summary</b></h5>
+          <p style='text-transform: uppercase; font-size: 1.5vh;'>{{ transaction.date }}</p></th>
+          <th>
+            <p class="address" style='text-transform: uppercase; font-size: 1.3vh; text-align:right;'>Deliver to: <br>
+        
+              {{ transaction.charge.full_name }}<br>
+              {{ transaction.charge.street_address1 }}<br>
+              {{ transaction.charge.street_address2 }}, {{ transaction.charge.town_or_city }}<br>
+              {{ transaction.charge.country }} {{ transaction.charge.postcode }}</br>
+          </p>
+          </th>
+        </tr>
+      </thead>
+      <tbody class='body-header'>
+        <tr>
+          <td>#</td>
+          <td>Product <i class="fa fa-times" aria-hidden="true"></i> Quantity</td>
+          <td>Total</td>
+        </tr>
+      </tbody>
+      
+      {% for l in line_items %}
+       <tbody class='body-content'>
+        <tr>
+          <td>{{ forloop.counter }} <img class='img-fluid' style='max-width: 100px' src="{{ l.product.image.url }}"/><br>{{ l.sku }}</td> 
+          <td>
+            &nbsp;
+             <p>{{ l.name }} x {{ l.transaction_quantity }}
+          </td>
+          <td>
+            &nbsp;
+            <p>${{ l.cost| div:100 }}0</p></td>
+        </tr>
+      </tbody>
+     {% endfor %}
+     <tbody>
+        <tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>
+            <p class='cost-total-border'></p>
+            <p class='cost-total'>Total Cost <span style='font-size:16px; color:#311b92;'>${{ transaction.cost|div:100 }}0</span></p>
+          </td>
+        </tr>
+      </tbody>
       
       
-      
-   
-    <div class="card col-lg-6 col-sm-10 mt-3 mb-3">
-      <div class="card-body">
-           <p>Date of Purchase: {{ transaction.date }} </p> <p>Total cost: ${{ transaction.cost|div:100 }}0 </p>
-          
-          
-          
-          
-     
-   
-     {% for l in line_items %}
-      
-       <img src="{{ l.product.image.url }}"/>
-       <p>{{ l.sku }} </p>
-         <p>Product Name: {{ l.name }} </p>
-           <p>${{ l.cost| div:100 }}0 </p>
-            <p>{{ l.transaction_quantity }} </p>
-       
-    
-      </div>
-    </div>
-      {% endfor %}
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-    </div>
-
-    
+    </table>
   </div>
   
   
   
-</div>
-</div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
 {% endblock %}

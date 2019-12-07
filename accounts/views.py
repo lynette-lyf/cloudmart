@@ -113,4 +113,3 @@ def view_transaction(request, transaction_id):
     'line_items': line_items,
     'cart_amount': cart_amount
     })
-
