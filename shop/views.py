@@ -76,6 +76,7 @@ def productview(request, product_id):
         'cart_amount': cart_amount
     })
 
+# Allow wishlist buttons to be toggled on catalog
 def toggleWishlist (request, product_id):
     wished_items = Wishlist.objects.filter(owner=request.user)
     all_products = Product.objects.all()

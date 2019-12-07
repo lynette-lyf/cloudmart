@@ -55,6 +55,7 @@ def add_to_wishlist(request, product_id):
     messages.success(request, message)
     return redirect(reverse('catalog'))
 
+# if wishlist product exists in cart, delete it from wishlist
 def remove_from_wishlist(request, product_id):
     wish_product = Product.objects.get(pk=product_id)
     existing_wishlist_item = Wishlist.objects.get(product=wish_product)

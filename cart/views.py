@@ -7,9 +7,6 @@ from django.utils.html import format_html
 
 # Create your views here.
 
-
-
-    
 # Calculate total cost of cart
 def calculate_cart_cost(request):
     all_cart_items = CartItem.objects.filter(owner=request.user)
@@ -79,6 +76,8 @@ def minus_one_cart(request, cart_item_id):
     existing_cart_item.save()
     return redirect(reverse('view_cart'))
 
+
+# if user places wishlist item in cart, delete item from wishlist
 def carted_wishlist_item(request, product_id):
     product = Product.objects.get(id=product_id)
     existing_wishlist_item = Wishlist.objects.filter(owner=request.user, product=product).first()

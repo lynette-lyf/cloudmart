@@ -88,6 +88,7 @@ def register(request):
                 messages.success(request, "You have registered successfully")
             else:
                 messages.error(request, "You failed to register")
+            # creating a custom login view that calls the REGISTER_URL function and defines a redirect page
             return redirect('%s?userAction=%s' % (settings.REGISTER_URL, request.path))
         else:
             return render(request, "accounts/register.template.html", {

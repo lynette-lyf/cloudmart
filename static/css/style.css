@@ -269,6 +269,7 @@ nav {
   font-size: 180px;
   font-weight: 800;
   line-height: 200px;
+  text-shadow: 2px 2px 4px #000000;
 }
 
 .parallax-slogan {
@@ -428,4 +429,64 @@ nav {
 /*MESSAGE ALERT*/
 .message-link {
   color: #311b92;
+}
+
+
+/*BANNER*/
+	.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-container > div {
+  flex: 1 0 26%;
+}
+
+@media ( max-width: 768px) {
+  .flex-container > div {
+    flex-basis: 34%;
+  }
+}
+
+@media ( max-width: 320px) {
+  .flex-container > div {
+    flex-basis: 51%;
+  }
+}
+
+/* non-essential demo styles */
+.flex-container > div {
+  height: 50px;
+  border: 15px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 7vh;
+  text-transform: uppercase;
+  letter-spacing:3px;
+  font-weight:bold;
+  color: white;
+  padding: 150px;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+.flex-container > .banner-japan {
+	background: url(media/japan.jpg);
+  	background-repeat: no-repeat;
+}
+
+.flex-container > .banner-japan a,
+.flex-container > .banner-korea a, 
+.flex-container > .banner-taiwan a {
+	color:white;
+}
+
+.flex-container > .banner-korea {
+	background: url(media/korea.jpg);
+  	background-repeat: no-repeat;
+}
+
+.flex-container > .banner-taiwan {
+	background: url(media/taiwan.jpg);
+  	background-repeat: no-repeat;
 }
