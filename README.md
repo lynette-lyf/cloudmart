@@ -63,7 +63,7 @@ The e-shop shares the common functions of an e-commerce website which allows use
 
 ## Features
 #### 1. Landing page and overall feature:
-**•	Parallax on cursor effect
+**•	Parallax on cursor effect**
 
 Found in the landing page, the interactive feature allows users to move their cursor around the page to toggle the parallax effect.
 
@@ -71,47 +71,47 @@ Found in the landing page, the interactive feature allows users to move their cu
 
 The navigation bar collapses in mobile view and the 'burger' menu icon transitions into a 'X' close button upon toggling it in mobile view.
 
-**•	Able to view number of carted items at the top of every page
+**•	Able to view number of carted items at the top of every page**
 
-**•	Notifications appear on top of the page every time a certain action is made by the user
+**•	Notifications appear on top of the page every time a certain action is made by the user**
 
 #### 2. Accounts:
-**•	Login
+**•	Login**
 
-**•	Logout
+**•	Logout**
 
-**•	Register
+**•	Register**
 
-**•	Password Reset
+**•	Password Reset**
 
-**•	Profile
+**•	Profile**
 
 Able to view their account details, order transactions, order summary and wishlist
 
 #### 3. Shop:
-**•	View all products in the catalog or filter them by country
+**•	View all products in the catalog or filter them by country**
 
-**•	View individual product page with details and descriptions of the product
+**•	View individual product page with details and descriptions of the product**
 
-**•	Add/Remove product to cart
+**•	Add/Remove product to cart**
 
-**•	Toggle 'Add to Wishlist' and 'Remove from Wishlist' button to Add/Remove product to the wishlist
+**•	Toggle 'Add to Wishlist' and 'Remove from Wishlist' button to Add/Remove product to the wishlist**
 
 #### 4. Cart:
-**•	Able to increase or decrease the quantity of products in cart and remove the product from the cart
+**•	Able to increase or decrease the quantity of products in cart and remove the product from the cart**
 
 If the cart item has a remaining quantity of 1 and the user presses the decrease button, the cart item will just be deleted off the cart. If there are no items in the cart, a message will appear on the cart notifying the user that the cart is empty.
 
 #### 5. Wishlist:
-**•	Wishlist items appear in the wishlist when the user has toggled the 'Add to Wishlist' button
+**•	Wishlist items appear in the wishlist when the user has toggled the 'Add to Wishlist' button**
 
-**•	Wishlist items disappear from the wishlist when the user has added it to their cart
+**•	Wishlist items disappear from the wishlist when the user has added it to their cart**
 
 
 #### 6. Checkout:
-**•	Delivery and Payment Form
+**•	Delivery and Payment Form**
 
-**•	Payment Gateway that accepts all forms of credit card payment via Stripe
+**•	Payment Gateway that accepts all forms of credit card payment via Stripe**
 
 ### Features Left to Implement
 - Improve the mobile and browser responsiveness of all pages
@@ -141,7 +141,7 @@ Responsive navbar tutorial by Youtuber [Dev Ed](https://www.youtube.com/watch?v=
 
 Parallax effect on cursor credits to CodePen user [GreenSock](https://codepen.io/GreenSock/pen/OeqgrZ)
 
-Gradient background tutorial by Youtuber[DarkCode](https://www.youtube.com/watch?v=NnrBempao2M&t=169s)
+Gradient background tutorial by Youtuber [DarkCode](https://www.youtube.com/watch?v=NnrBempao2M&t=169s)
 
 Account form layout credits to CodePen user [Tirth Patel](https://codepen.io/T-P/pen/bpWqrr)
 
