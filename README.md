@@ -7,6 +7,10 @@ This e-commerce platform is a food retailer that aims to specialize in selling p
   
 A live demo can be found [here](https://lyf-cloudmart.herokuapp.com/).
 
+To login as a test user:
+
+`username: testuser                                                                                                             password: cloud123`
+
 ## UX
 
 The overall design of the website has different shades of purple and pink colours and has the same pixelated cloud background which syncs with the theme of the company. To keep things consistent, each component in the website has its own theme (e.g The accounts app comprising of the login/logout/register pages have the same theme, the user profile page comprising of the user's details, orders and wishlist have the same theme.) Each page does not stray too far from the generic e-shop layout which users - who frequently do online shopping, may find easy to use.
