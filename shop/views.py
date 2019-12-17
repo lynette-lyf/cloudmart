@@ -14,11 +14,9 @@ def catalog(request):
     # View all products
     products = Product.objects.all()
     # Pass in wishlist products to the catalog (list comprehension)
-    print(request.user)
     wished_products = None
     if request.user.is_authenticated:
         wished_products = [ wished['product__id'] for wished in Wishlist.objects.filter(owner=request.user).values('product__id') ]
-    print (wished_products)
     cart_amount = None
     if request.user.is_authenticated:
         cart_amount = CartItem.objects.filter(owner=request.user).count()
@@ -32,33 +30,42 @@ def catalog(request):
 def catalog_japan(request):
     origin_search = Origin.objects.get(name='Japan')
     products = Product.objects.filter(origin=origin_search)
+    if request.user.is_authenticated:
+        wished_products = [ wished['product__id'] for wished in Wishlist.objects.filter(owner=request.user).values('product__id') ]
     cart_amount = None
     if request.user.is_authenticated:
         cart_amount = CartItem.objects.filter(owner=request.user).count()
     return render(request, 'shop/catalog.template.html',{
         'products': products,
+        'wished_products': wished_products,
         'cart_amount': cart_amount
     })
     
 def catalog_korea(request):
     origin_search = Origin.objects.get(name='Korea')
     products = Product.objects.filter(origin=origin_search)
+    if request.user.is_authenticated:
+        wished_products = [ wished['product__id'] for wished in Wishlist.objects.filter(owner=request.user).values('product__id') ]
     cart_amount = None
     if request.user.is_authenticated:
         cart_amount = CartItem.objects.filter(owner=request.user).count()
     return render(request, 'shop/catalog.template.html',{
         'products': products,
+        'wished_products': wished_products,
         'cart_amount': cart_amount
     })
     
 def catalog_taiwan(request):
     origin_search = Origin.objects.get(name='Taiwan')
     products = Product.objects.filter(origin=origin_search)
+    if request.user.is_authenticated:
+        wished_products = [ wished['product__id'] for wished in Wishlist.objects.filter(owner=request.user).values('product__id') ]
     cart_amount = None
     if request.user.is_authenticated:
         cart_amount = CartItem.objects.filter(owner=request.user).count()
     return render(request, 'shop/catalog.template.html',{
         'products': products,
+        'wished_products': wished_products,
         'cart_amount': cart_amount
     })
     
