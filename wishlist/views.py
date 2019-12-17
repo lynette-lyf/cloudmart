@@ -58,7 +58,7 @@ def add_to_wishlist(request, product_id):
 # if wishlist product exists in cart, delete it from wishlist
 def remove_from_wishlist(request, product_id):
     wish_product = Product.objects.get(pk=product_id)
-    existing_wishlist_item = Wishlist.objects.get(product=wish_product)
+    existing_wishlist_item = Wishlist.objects.filter(owner=request.user, product_id=wish_product).first()
     existing_wishlist_item.delete()
     message = format_html('Product has been <span style="color:#b53737;">removed</span> from your <a style="color: #311b92; text-decoration: underline;" href="{}">wishlist</a>.', reverse('view_wishlist'))
     messages.success(request, message)
