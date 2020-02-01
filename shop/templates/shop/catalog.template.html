@@ -14,7 +14,14 @@ body {
   background-repeat: no-repeat;
   overflow-y: hidden;
 }
-.product-img {
+
+/* wide screen desktops */
+@media (min-width:1680px) {
+#product-card {
+    position: relative;z-index:1; border:0px;padding: 2%; margin:2%; flex-grow: 1; flex-basis: 25%; display: flex; text-align:center; border-radius:0px;
+}
+
+#product-img {
     -webkit-transform: scale(1);
 	transform: scale(1);
 	-webkit-transition: .3s ease-in-out;
@@ -22,10 +29,48 @@ body {
 	max-width:200px;
 	max-height:200px;
 }
-.product-img:hover {
+
+#product-img:hover {
     -webkit-transform: scale(1.1);
 	transform: scale(1.1);
 }
+}
+
+/* desktops */
+@media (min-width:992px) and (max-width: 1679px) {
+#product-card {
+    position: relative;z-index:1; border:0px;padding: 2%; margin:2%; flex-grow: 1; flex-basis: 25%; display: flex; text-align:center; border-radius:0px;
+}
+
+#product-img {
+    -webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+	max-width:150px;
+	max-height:150px;
+}
+
+#product-img:hover {
+    -webkit-transform: scale(1.1);
+	transform: scale(1.1);
+}
+}
+
+/* Extra Small Devices, Phones */ 
+    @media (min-width: 480px) and (max-width: 767px) {
+#product-card {
+    position: relative;z-index:1; border:0px;padding: 2%; margin:2%; flex-grow: 1; flex-basis: 100%; display: flex; text-align:center; border-radius:0px;
+}
+    }
+    
+/* Small Devices, Tablets */
+    @media (min-width : 768px) and (max-width: 991px) {
+#product-card {
+    position: relative;z-index:1; border:0px;padding: 2%; margin:2%; flex-grow: 1; flex-basis: 45%; display: flex; text-align:center; border-radius:0px;
+}
+    }
+
 .product-name {
   padding-top: 2vh;
   font-weight: bold;
@@ -108,6 +153,11 @@ body {
     background-color: #ea3a7e;
 }
 
+@media (max-width: 1439px) {
+.filter-container {
+    display:none;
+}
+}
 
 </style>
 
@@ -164,13 +214,13 @@ body {
   
 
     <div class="container-fluid col-lg-12 col-md-10 col-sm-12 pl-5 pr-5 pb-5" style='background-color:none; height: 100vh; overflow-y: auto;'>
-        <div id="product-container" class="container-fluid col-lg-8 col-md-8 col-sm-10" style="display: flex; flex-wrap: wrap;">   
+        <div id="product-container" class="container-fluid col-xl-8 col-lg-12 col-md-12 col-sm-12" style="display: flex; flex-wrap: wrap;">   
 
    
     
     {%for product in products %}
     
-    <div class="card shadow p-3 mb-5 bg-white" style="position: relative;z-index:1; border:0px;padding: 2%; margin:2%; flex-grow: 1; flex-basis: 25%; display: flex; text-align:center; border-radius:0px;">
+    <div id="product-card" class="card shadow p-3 mb-5 bg-white">
            
            {% if user.is_authenticated %}
                <div class='card-title'>
@@ -191,7 +241,7 @@ body {
        
         <div class="card-body">
             
-            <a href="{% url 'productview' product_id=product.id %}"><img class='product-img' src="{{product.image.url}}" class="card-img-top">
+            <a href="{% url 'productview' product_id=product.id %}"><img id='product-img' class='img-fluid' src="{{product.image.url}}" class="card-img-top">
             
             <div class='wrap-product pt-2'>
             <h5 class="product-name" >{{product.name}}</h5></a>
