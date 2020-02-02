@@ -26,7 +26,53 @@
 	<title>Cloudmart</title>
 
 </head>
+<style>
+	  @media (min-width: 768px) {
+  	.cart {
+  		top: -1.5rem;
+  		font-size: 2rem;
+  	}
+  	.logo {
+  		transform: scale(0.7);
+  	}
+  }
+  
+  @media (max-width: 414px) {
+  	.logo {
+  		transform: scale(0.7);
+  		left:20vw;
+  	}
+  	.cart {
+  		top: -2vh;
+  		right: -6vw;
+  		font-size: 2.5vh;
+  	}
+  	.burger div {
+  		width: 15px;
+  		height: 2px;
+  		margin: 3px;
+  	}
+  	.burger {
+    left: -1vw;
+    top: 5vh;
+    transform: scale(2);
+  }
+  
+  .toggle .line1 {
+  transform: rotate(-45deg) translate(-3px, 4px);
+}
 
+.toggle .line2 {
+  opacity: 0;
+}
+
+.toggle .line3 {
+  transform: rotate(45deg) translate(-3px, -4px);
+}
+
+  }
+ 
+</style>
 <body>
 	<div class="MainContainer">
 		<div class="ContentContainer">
@@ -70,7 +116,7 @@
 
 				<!-- Cart -->
 				<div class="dropdown-nav">
-					<a href="{% url "view_cart" %}" class="cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></i>
+					<a href="{% url "view_cart" %}" class="cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></i>
 					{% if cart_amount != 0 %}
 					<span class="badge badge-light">{{ cart_amount }}</span>
 					{% endif %}
