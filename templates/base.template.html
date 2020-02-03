@@ -30,7 +30,6 @@
 	.notification {
 		position: absolute; top:0px;width:100vw;background-color: white; text-align:center;font-size: 2vh; font-weight:bold; opacity:0.9;
 		 -webkit-animation: 0.5s ease-out 0s 1 notification;
-		
 	}
 	
 
@@ -46,26 +45,55 @@
   }
 }
   
-	  @media (min-width: 768px) {
-  	.cart {
+@media (min-width: 768px) and (max-width: 1023px) {
+  	.logo {
+  		transform: scale(0.5);
+  	}
+}
+
+@media (max-width: 1024px) {
+	.logo {
+	    top: -2vh;
+	    left: 15vw;
+	    transform: scale(0.6);
+  	}
+	.cart {
   		top: -1.5rem;
   		font-size: 2rem;
   	}
-  	.logo {
-  		transform: scale(0.7);
+  	.badge {
+  	font-size:38%!important;
+  	left:4vw;
+  	top:2.8vh;
   	}
-  }
+}
+
+@media (min-width: 1025px) {
+	.cart {
+  		font-size: 2rem;
+  	}
+  	.badge {
+  	font-size:38%!important;
+  	}
+}
   
   @media (max-width: 414px) {
   	.logo {
-  		transform: scale(0.7);
-  		left:20vw;
+  		transform: scale(0.5);
+  		left:5vw;
   	}
   	.cart {
   		top: -2vh;
   		right: -6vw;
   		font-size: 2.5vh;
   	}
+  	
+  	.badge {
+  	font-size:38%!important;
+  	left:6.5vw;
+  	top:3.4vh;
+  	}
+  	
   	.burger div {
   		width: 15px;
   		height: 2px;

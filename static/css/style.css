@@ -142,6 +142,7 @@ nav {
     position: absolute;
     left: 40px;
     bottom: 20px;
+    font-size:38%!important;
   }
 
   .dropdown-nav {
@@ -160,9 +161,9 @@ nav {
 @media screen and (max-width: 1024px) {
 
   .logo {
-    top: 0.5vh;
-    left: 22vw;
-    font-size: 7vh;
+    top: -2vh;
+    left: 15vw;
+    font-size: 10vh;
   }
 
   .nav-links, .nav-links a, .nav-links li, .dropdown, .cart-items {

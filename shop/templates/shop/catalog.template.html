@@ -58,18 +58,39 @@ body {
 }
 
 /* Extra Small Devices, Phones */ 
-    @media (min-width: 480px) and (max-width: 767px) {
+    @media (min-width: 360px) and (max-width: 767px) {
 #product-card {
-    position: relative;z-index:1; border:0px;padding: 2%; margin:2%; flex-grow: 1; flex-basis: 100%; display: flex; text-align:center; border-radius:0px;
+    position: relative;z-index:1; border:0px; flex-grow: 1; flex-basis: 100%; display: flex; text-align:center; border-radius:0px;
+}
+
+#btn-cart {
+   width: 38vw!important;
+}
+
+.wishlist-btn {
+    right: 3vw!important;
 }
     }
     
 /* Small Devices, Tablets */
     @media (min-width : 768px) and (max-width: 991px) {
 #product-card {
-    position: relative;z-index:1; border:0px;padding: 2%; margin:2%; flex-grow: 1; flex-basis: 45%; display: flex; text-align:center; border-radius:0px;
+    position: relative;z-index:1; border:0px;padding: 1%; margin:2%; flex-grow: 1; flex-basis: 45%; display: flex; text-align:center; border-radius:0px;
+}
+
+#btn-cart {
+   width: 25vw!important;
+}
+
+.wishlist-btn {
+    right: 2vw!important;
 }
     }
+    
+
+.wishlist-btn {
+    flex-direction: row; position: absolute; right: 1vw;
+}
 
 .product-name {
   padding-top: 2vh;
@@ -213,7 +234,7 @@ body {
   
   
 
-    <div class="container-fluid col-lg-12 col-md-10 col-sm-12 pl-5 pr-5 pb-5" style='background-color:none; height: 100vh; overflow-y: auto;'>
+    <div class="container-fluid col-12 pl-5 pr-5 pb-5" style='background-color:none; height: 100vh; overflow-y: auto;'>
         <div id="product-container" class="container-fluid col-xl-8 col-lg-12 col-md-12 col-sm-12" style="display: flex; flex-wrap: wrap;">   
 
    
@@ -225,9 +246,9 @@ body {
            {% if user.is_authenticated %}
                <div class='card-title'>
                 {% if product.id in wished_products %}
-                <a class='wishlist-btn' style='flex-direction: row; position: absolute; right: 1vw; ' href="{% url 'remove_from_wishlist' product_id=product.id %}" data-toggle="tooltip" data-placement="right" title="Remove from wishlist"><i style='color: #311b92;' class="fa fa-heart fa-2x" aria-hidden="true"></i></a>
+                <a class='wishlist-btn' href="{% url 'remove_from_wishlist' product_id=product.id %}" data-toggle="tooltip" data-placement="right" title="Remove from wishlist"><i style='color: #311b92;' class="fa fa-heart fa-2x" aria-hidden="true"></i></a>
                 {%else%} 
-                <a class='wishlist-btn' style='flex-direction: row; position: absolute; right: 1vw;' href="{% url 'add_to_wishlist' product_id=product.id %}" data-toggle="tooltip" data-placement="right" title="Add to wishlist"><i style='color: #311b92' class="fa fa-heart-o fa-2x" aria-hidden="true"></i></a>
+                <a class='wishlist-btn' href="{% url 'add_to_wishlist' product_id=product.id %}" data-toggle="tooltip" data-placement="right" title="Add to wishlist"><i style='color: #311b92' class="fa fa-heart-o fa-2x" aria-hidden="true"></i></a>
                {%endif%}
                 </div>
             {%endif%}
