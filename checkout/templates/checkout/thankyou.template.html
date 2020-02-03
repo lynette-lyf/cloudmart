@@ -27,17 +27,39 @@
   z-index:1200;
 }
 
+@media (max-width: 1919px) {
+  .progressbar {
+    display:none;
+  }
+}
+
+@media (max-width: 414px) {
+  table {
+    transform: scale(0.9);
+  }
+  #wrapper {
+    padding: 0rem!important;
+    height:80vh!important;
+  }
+  #thankyou-image {
+      transform: scale(0.8);
+  }
+  #trackorder-btn {
+      margin-top:0vh!important;
+  }
+}
+
 </style>
 
 <div class='progressbar'><img src='https://i.imgur.com/HQA1w6j.png'/></div>
 
 <div class="checkout-background container-fluid">
     <div class='thankyou-wrapper'>
-         <div class="container-fluid col-lg-8 col-md-10 col-sm-12 mt-5 p-5" style='background-color:white; height: 70vh; overflow-y: none;'>
+         <div id='wrapper' class="container-fluid col-lg-8 col-md-10 col-sm-12 mt-5" style='padding:3rem;background-color:white; height: 70vh; overflow-y: none;'>
              <h3 class='thankyou-message pl-5 pt-5 pr-5 pb-1'>Thank you for shopping with us! An e-invoice has been sent to your email. </h1>
-             <img style='width: 400px' src='https://i.imgur.com/xWV2Zck.png'/><br>
+             <img id='thankyou-image' style='width: 400px' src='https://i.imgur.com/xWV2Zck.png'/><br>
         
-             <a class="btn p-3 mt-3" style='background-color:#311b92; font-size: 13px; color: white; border-radius:0px;' href="{%url 'user_profile' %}" role="button">Track Order</a>
+             <a id='trackorder-btn' class="btn p-3 mt-3" style='background-color:#311b92; font-size: 13px; color: white; border-radius:0px;' href="{%url 'user_profile' %}" role="button">Track Order</a>
              
         </div>
     </div>

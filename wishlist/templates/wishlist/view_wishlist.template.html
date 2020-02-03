@@ -3,6 +3,10 @@
 
 <style>
  
+#welcome-img {
+  position: absolute; left: 43vw; top: 3vh; width:300px;
+}
+
 
 .product-img {
     -webkit-transform: scale(1);
@@ -42,6 +46,52 @@
    background-color:#7265ad;
 }
 
+#wishlist-card {
+  position: relative;z-index:1; border:0px;padding: 1%; margin:1%; flex-grow: 1; flex-basis: 25%; display: flex; text-align:center; border-radius:0px;
+}
+
+/* Extra Small Devices, Phones */ 
+@media (min-width: 320px) and (max-width: 767px) {
+  #welcome-img {
+    transform:scale(0.4);
+    top:5vh;
+    left:30vw;
+  }
+  
+  #wishlist-card {
+      position: relative;z-index:1; border:0px; flex-grow: 1; flex-basis: 100%; display: flex; text-align:center; border-radius:0px;
+  }
+  
+    #btn-cart {
+     width: 38vw!important;
+  }
+  
+  .wishlist-btn {
+      right: 3vw!important;
+  }
+}
+
+/* Small Devices, Tablets */
+@media (min-width : 768px) and (max-width: 1024px) {
+  #welcome-img {
+    transform:scale(0.7);
+    top:8vh;
+  }
+  
+  #wishlist-card {
+      position: relative;z-index:1; border:0px;padding: 1%; margin:2%; flex-grow: 1; flex-basis: 45%; display: flex; text-align:center; border-radius:0px;
+  }
+  
+  #btn-cart {
+   width: 18vw!important;
+  }
+
+.wishlist-btn {
+    right: 1vw!important;
+  }
+}
+
+
 
 
 </style>
@@ -50,7 +100,7 @@
     <div class='user-details' style='position: relative; left: 11vw; padding-top: 6vh;'>
 <h1 style='font-size: 5vh; color: white;'>Welcome, {{ user }}</h1>
 <p style='font-size: 2vh; color: white;'>{{ user.email }}</p>
-<img src='https://i.imgur.com/HlWJrqT.png' style='position: absolute; left: 43vw; top: 3vh; width:300px;'/>
+<img id='welcome-img' src='https://i.imgur.com/HlWJrqT.png'/>
 </div>
 </header>
 
@@ -82,7 +132,7 @@
 
 
   {% for wishlist_item in all_wishlist_items %}
-  <div class="card shadow p-3 mb-3 bg-white" style="position: relative;z-index:1; border:0px;padding: 1%; margin:1%; flex-grow: 1; flex-basis: 25%; display: flex; text-align:center; border-radius:0px;"> 
+  <div id='wishlist-card' class="card shadow p-3 mb-3 bg-white"> 
     
     
     <div class='card-title'>
