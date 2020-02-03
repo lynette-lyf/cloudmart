@@ -25,6 +25,41 @@
 .cost-total {
   font-size: 13px;
 }
+
+#welcome-img {
+  position: absolute; left: 43vw; top: 3vh; width:300px;
+}
+
+.table-responsive {
+  margin-left: 21vw;
+}
+
+/* Extra Small Devices, Phones */ 
+@media (min-width: 320px) and (max-width: 767px) {
+  #welcome-img {
+    transform:scale(0.4);
+    top:5vh;
+    left:30vw;
+  }
+  .table-responsive {
+    margin-left: 0vw;
+  }
+  table {
+    transform: scale(0.9);
+  }
+}
+
+/* Small Devices, Tablets */
+@media (min-width : 768px) and (max-width: 1024px) {
+  #welcome-img {
+    transform:scale(0.7);
+    top:8vh;
+  }
+  .table-responsive {
+  margin-left: 0vw;
+  }
+}
+  
 </style>
 
 
@@ -32,7 +67,7 @@
     <div class='user-details' style='position: relative; left: 11vw; padding-top: 6vh;'>
 <h1 style='font-size: 5vh; color: white;'>Welcome, {{ user }}</h1>
 <p style='font-size: 2vh; color: white;'>{{ user.email }}</p>
-<img src='https://i.imgur.com/HlWJrqT.png' style='position: absolute; left: 43vw; top: 3vh; width:300px;'/>
+<img id='welcome-img' src='https://i.imgur.com/HlWJrqT.png'/>
 </div>
 </header>
 
@@ -50,7 +85,7 @@
   </div>
   
   
-<div class="table-responsive col-lg-7 col-md-10 col-sm-12 pt-5" style="margin-left: 21vw;">
+<div class="table-responsive col-xl-7 col-lg-12 col-md-12 col-sm-12 pt-5">
     <table class="table table-borderless">
       <thead style='color: white; background-color: #1e1753'>
         <tr>

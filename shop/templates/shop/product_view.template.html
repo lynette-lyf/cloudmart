@@ -41,19 +41,66 @@ background: linear-gradient(to right, #311b92,#311b92) no-repeat;
   background-position: center bottom;
 }
 
+#productimg-container {
+    background-color:white; height: 70vh; overflow-y: none;
+}
 
+#product-image {
+       width:500px;
+   } 
+
+#productinfo-container {
+    background-color:white; height:30vh;
+}
+
+@media (max-width: 320px) and (max-width: 568px) {
+    #product-image {
+       width:200px;
+   }
+   #productimg-container {
+       height:120vh;
+   }
+   #btn-cart {
+       width:50vw;
+   }
+}
+
+/* Extra Small Devices, Phones */ 
+@media (min-width: 321px) and (max-width: 767px) {
+    #product-image {
+       width:280px;
+   }
+   #productimg-container {
+       height:120vh;
+   }
+   #btn-cart {
+       width:50vw;
+   }
+}
+/* Small Devices, Tablets */
+@media (min-width : 768px) and (max-width: 1024px) {
+   #product-image {
+       width:400px;
+   }
+   #productimg-container {
+       height:100vh;
+   }
+   #btn-cart {
+       width:35vw;
+   }
+}
 
 
 </style>
 
 <div class="background container-fluid">
     <div class='product-wrapper'>
-         <div class="container-fluid col-lg-8 col-md-10 col-sm-12 mt-5 p-5" style='background-color:white; height: 70vh; overflow-y: none;'>
+         <div id='productimg-container' class="container-fluid col-xl-8 col-lg-10 col-md-10 col-sm-12 mt-5 p-5">
              <div class="row">
-                 <div class='col-lg-7 col-md-12 col-sm-12'>
-                      <img class='pt-3' style='max-width:500px;' src="{{selected_product.image.url}}"/> 
+                 <div class='col-xl-7 col-lg-7 col-md-10 col-sm-12 pr-0 pl-0'>
+                      <img id='product-image' class='pt-3' src="{{selected_product.image.url}}"/> 
                  </div>
-                 <div class='col-lg-5 col-md-12 col-sm-12' style='background-color:white; height:50vh;'>
+                 <div id='productinfo-container' class='col-xl-5 col-lg-5 col-md-10 col-sm-12'>
                          
                
                 <h4 class='product-title' style='background-color:transparent; color:#311b92; font-size: 2vh;font-weight:bold;text-decoration: none; text-transform:uppercase;' >{{selected_product.name}}</h4>
@@ -62,11 +109,6 @@ background: linear-gradient(to right, #311b92,#311b92) no-repeat;
                 
                 <h4 class='product-cost mt-4 mb-4'><b>${{selected_product.getCostInDollars}}0</b></h4>
                 
-                
-                <!--ERROR LIES HERE: ADD/REMOVE TO CART & ADD/REMOVE WISHLIST URL-->
-                
- 
-            
  {% if user.is_authenticated %}
              <a id='btn-cart' class="btn p-3 mt-3" href="{% url 'add_to_cart' product_id=selected_product.id %}" role="button">ADD TO CART</a>
            <br>
