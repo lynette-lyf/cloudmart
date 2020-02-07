@@ -48,12 +48,12 @@ def login(request):
                 messages.success(request, "You have successfully logged in")
                 return redirect('%s?userAction=%s' % (settings.LOGIN_URL, request.path))
             else:
-                login_form.add_error(None, "Invalid username or password")
+                login_form.add_error('None', "Invalid username or password")
     else:
         login_form = UserLoginForm()
-    return render(request, 'accounts/login.template.html', {
-        'form':login_form
-    })
+        return render(request, 'accounts/login.template.html', {
+            'form':login_form
+        })
 
 @login_required    
 def profile(request):

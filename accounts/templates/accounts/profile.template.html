@@ -11,10 +11,6 @@
   margin-left: 21vw;
 }
 
-.card-header {
-  background-color: #1e1753; position: absolute; z-index:2; top:-6.1vh; left:21vw;
-}
-
 /* Extra Small Devices, Phones */ 
 @media (min-width: 320px) and (max-width: 767px) {
   #welcome-img {
@@ -22,15 +18,9 @@
     top:5vh;
     left:30vw;
   }
-  
-  .card-header {
-    left:0vw!important;
-    top:-13vw;
-  }
-  
   #transaction-body {
   margin-left: 0vw;
-  }
+}
 }
 
 /* Small Devices, Tablets */
@@ -39,15 +29,9 @@
     transform:scale(0.7);
     top:8vh;
   }
-  
-  .card-header {
-    left:0vw!important;
-    top:-5.2vw;
-  }
-  
   #transaction-body {
   margin-left: 0vw;
-  }
+}
 }
   
 </style>
@@ -63,7 +47,7 @@
 
 <div class="container-fluid">
 <div class="card text-center" style='border: none;'>
-  <div class="card-header">
+  <div class="card-header" style='background-color: #1e1753; position: absolute; z-index:2; top:-6.1vh;'>
     <ul class="nav nav-tabs card-header-tabs">
       <li class="nav-item">
         <a class="nav-link active" href="{% url 'user_profile' %}">Orders</a>

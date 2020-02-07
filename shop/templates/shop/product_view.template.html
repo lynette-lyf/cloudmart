@@ -1,11 +1,98 @@
 {% extends 'base.template.html' %}
-{% load static %}
-
-{%block page_styles %}
-    <link rel="stylesheet" href="{% static 'css/product_view.css' %}" type="text/css" />
-{%endblock %}
-
 {%block content %}
+
+<style>
+ 
+.background.container-fluid {
+  flex: 1 0 auto;
+  position: absolute;
+  height: 88vh;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  background: url(/media/sky.png);
+  background-repeat: no-repeat;
+}
+
+.product-wrapper {
+    text-align: center;
+}
+
+#btn-cart {
+   background-color:#311b92;
+   font-size: 13px;
+   letter-spacing:1px;
+   color: white;
+   border-radius:0px;
+   width: 13vw;
+}
+#btn-cart:hover {
+   background-color:#7265ad;
+}
+.filter-container {
+    position:absolute;
+    color:white;
+    z-index:3;
+}
+
+.nav-item:active, .nav-item:focus, .nav-item {
+background: linear-gradient(to right, #311b92,#311b92) no-repeat;
+  background-size: 80% 3px;
+  background-position: center bottom;
+}
+
+#productimg-container {
+    background-color:white; height: 70vh; overflow-y: none;
+}
+
+#product-image {
+       width:500px;
+   } 
+
+#productinfo-container {
+    background-color:white; height:30vh;
+}
+
+@media (max-width: 320px) and (max-width: 568px) {
+    #product-image {
+       width:200px;
+   }
+   #productimg-container {
+       height:120vh;
+   }
+   #btn-cart {
+       width:50vw;
+   }
+}
+
+/* Extra Small Devices, Phones */ 
+@media (min-width: 321px) and (max-width: 767px) {
+    #product-image {
+       width:280px;
+   }
+   #productimg-container {
+       height:120vh;
+   }
+   #btn-cart {
+       width:50vw;
+   }
+}
+/* Small Devices, Tablets */
+@media (min-width : 768px) and (max-width: 1024px) {
+   #product-image {
+       width:400px;
+   }
+   #productimg-container {
+       height:100vh;
+   }
+   #btn-cart {
+       width:35vw;
+   }
+}
+
+
+</style>
+
 <div class="background container-fluid">
     <div class='product-wrapper'>
          <div id='productimg-container' class="container-fluid col-xl-8 col-lg-10 col-md-10 col-sm-12 mt-5 p-5">
@@ -41,16 +128,10 @@
                 
 <ul class="nav nav-pills mb-3 mt-5" id="pills-tab" role="tablist">
       <li class="nav-item">
-        <a class="nav-link active" style='background-color:transparent; color:#311b92; font-weight:bold;text-decoration: none; text-transform:uppercase;'
-        id="pills-description-tab" data-toggle="pill" href="#pills-description" role="tab" aria-controls="pills-description" aria-selected="true">
-            Description
-        </a>
+        <a class="nav-link active" style='background-color:transparent; color:#311b92; font-weight:bold;text-decoration: none; text-transform:uppercase;' id="pills-description-tab" data-toggle="pill" href="#pills-description" role="tab" aria-controls="pills-description" aria-selected="true">Description</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" style='background-color:transparent; color:#311b92; font-weight:bold;text-decoration: none; text-transform:uppercase;'
-        id="pills-details-tab" data-toggle="pill" href="#pills-details" role="tab" aria-controls="pills-details" aria-selected="false">
-            Details
-        </a>
+        <a class="nav-link" style='background-color:transparent; color:#311b92; font-weight:bold;text-decoration: none; text-transform:uppercase;'  id="pills-details-tab" data-toggle="pill" href="#pills-details" role="tab" aria-controls="pills-details" aria-selected="false">Details</a>
       </li>
     </ul>
     <div class="tab-content" id="pills-tabContent">
