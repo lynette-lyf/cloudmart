@@ -7,6 +7,13 @@
   position: absolute; left: 43vw; top: 3vh; width:300px;
 }
 
+.card-header {
+  background-color: #1e1753; position: absolute; z-index:2; top:-6.1vh;
+}
+
+#wishlist-body {
+  margin-left: 20vw;
+}
 
 .product-img {
     -webkit-transform: scale(1);
@@ -58,6 +65,15 @@
     left:30vw;
   }
   
+  #wishlist-body {
+  margin-left: 0vw!important;
+  }
+  
+  .card-header {
+    left:0vw!important;
+    top:-13vw;
+  }
+  
   #wishlist-card {
       position: relative;z-index:1; border:0px; flex-grow: 1; flex-basis: 100%; display: flex; text-align:center; border-radius:0px;
   }
@@ -69,6 +85,11 @@
   .wishlist-btn {
       right: 3vw!important;
   }
+  
+  .empty-cart {
+    transform: scale(0.8)!important;
+    left:1vw!important;
+  }
 }
 
 /* Small Devices, Tablets */
@@ -76,6 +97,15 @@
   #welcome-img {
     transform:scale(0.7);
     top:8vh;
+  }
+  
+  #wishlist-body {
+    margin-left: 0vw!important;
+  }
+  
+  .card-header {
+    left:0vw!important;
+    top:-5.2vw;
   }
   
   #wishlist-card {
@@ -88,6 +118,10 @@
 
 .wishlist-btn {
     right: 1vw!important;
+  }
+  
+  .empty-cart {
+    left:9vw!important;
   }
 }
 
@@ -104,9 +138,9 @@
 </div>
 </header>
 
-<div class="container-fluid" style="margin-left: 20vw;">
+<div class="container-fluid" id='wishlist-body'>
 <div class="card text-center" style='border: none;'>
-  <div class="card-header" style='background-color: #1e1753; position: absolute; z-index:2; top:-6.1vh;'>
+  <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs">
       <li class="nav-item">
         <a class="nav-link" style='text-decoration:none; color: white;' href="{% url 'user_profile' %}">Orders</a>
