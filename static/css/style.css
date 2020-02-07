@@ -171,15 +171,10 @@ nav {
   }
 
   .nav-links {
-    position: absolute;
-    left: 5vw;
-    height: 95vh;
-    top: 5vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 50%;
-    transform: translateX(-100%);
     transition: transform 0.5s ease-in;
 
   }
@@ -231,6 +226,11 @@ nav {
 /* MOBILE VIEW > NAVBAR ANIMATION */
 .nav-active {
   transform: translateX(0);
+  background-color: #1e1753!important;
+  width: 100vh;
+  position: absolute;
+  left: -10vw;
+  top: 0vh;
 }
 
 @keyframes navLinkFade {

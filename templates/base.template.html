@@ -45,7 +45,44 @@
     opacity:0.8;
   }
 }
+
+/*Navbar in mobile view*/
+@media screen and (max-width: 1024px) {
+
+	.burger {
+		z-index:5000;
+	}
+	
+	.nav-active {
+	  transform: translateX(0);
+	  background-color: #1e1753!important;
+	  width: 100vh;
+	  position: absolute;
+	  left: -10vw;
+	  top: 0vh;
+	}
+
+  .nav-links {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.5s ease-in;
+  }
   
+  .nav-links a {
+  	color: white;
+    border-radius: 30px;
+    position: absolute;
+    text-align: center;
+    left: -30vh;
+    top: -3vh;
+    font-size: 3vh;
+    background-color:transparent!important;
+  }
+}
+
+
 @media (min-width: 768px) and (max-width: 1023px) {
   	.logo {
   		transform: scale(0.5);
